@@ -1,0 +1,5 @@
+# alembic/versions — las migraciones se generan aquí
+# Comando para crear una nueva migración:
+#   alembic revision --autogenerate -m "descripcion"
+# Comando para aplicar migraciones:
+#   alembic upgrade head
