@@ -38,12 +38,22 @@ def get_current_user(
     db: Session = Depends(get_db),
 ) -> User:
     """Dependency de FastAPI — valida el JWT y retorna el usuario autenticado."""
-    user_id = decode_access_token(credentials.credentials)
-    if not user_id:
+    user_id_str = decode_access_token(credentials.credentials)
+    if not user_id_str:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Token inválido o expirado",
         )
+    
+    import uuid
+    try:
+        user_id = uuid.UUID(user_id_str)
+    except ValueError:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Token inválido (ID no es UUID válido)",
+        )
+
     user = UserRepository(db).get_by_id(user_id)
     if not user:
         raise HTTPException(
