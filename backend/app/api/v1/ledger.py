@@ -1,16 +1,9 @@
-from fastapi import APIRouter, Depends
-from app.services.auth_service import get_current_user
+# Módulo ledger — rutas migradas a /clients/{id}/ledger y /clients/{id}/balance
+# Ver app/api/v1/clients.py para la implementación actual.
+#
+# Este archivo se mantiene para no romper el import en router.py.
+# Puede reutilizarse para rutas adicionales de ledger en fases futuras.
+
+from fastapi import APIRouter
 
 router = APIRouter(prefix="/ledger", tags=["ledger"])
-
-
-@router.get("/{client_id}", summary="Libro mayor del cliente [Fase 1]")
-def get_ledger(client_id: str, _=Depends(get_current_user)):
-    # TODO Fase 1
-    return {"detail": "not implemented yet"}
-
-
-@router.get("/{client_id}/balance", summary="Saldo del cliente [Fase 1]")
-def get_balance(client_id: str, _=Depends(get_current_user)):
-    # TODO Fase 1
-    return {"detail": "not implemented yet"}
