@@ -16,7 +16,7 @@
 | Backend | Python + FastAPI | Python 3.11+, FastAPI 0.110+ |
 | ORM | SQLAlchemy | 2+ |
 | Migraciones | Alembic | 1.13+ |
-| Base de datos | PostgreSQL | 15+ |
+| Base de datos | MySQL | 8.0+ |
 | Auth | JWT (python-jose) + bcrypt | — |
 | Contenedores | Docker + Docker Compose | — |
 | Variables de entorno | pydantic-settings | 2+ |
@@ -114,7 +114,7 @@ Kambio/
 │   ├── ARCHITECTURE.md
 │   └── TASKS.md
 │
-├── docker-compose.yml               # Postgres + backend + frontend
+├── docker-compose.yml               # MySQL + backend + frontend
 ├── AGENTS.md
 ├── CLAUDE.md
 └── README.md
@@ -298,15 +298,15 @@ frontend/src/
 
 ```yaml
 services:
-  postgres:
-    image: postgres:15
-    ports: ["5432:5432"]
-    volumes: [postgres_data:/var/lib/postgresql/data]
+  mysql:
+    image: mysql:8.0
+    ports: ["3306:3306"]
+    volumes: [mysql_data:/var/lib/mysql]
 
   backend:
     build: ./backend
     ports: ["8000:8000"]
-    depends_on: [postgres]
+    depends_on: [mysql]
     volumes: [./backend:/app]   # hot reload
 
   frontend:

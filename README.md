@@ -5,7 +5,7 @@ Sistema financiero web para control de divisas MXN/GTQ, libro mayor por cliente,
 ## Stack
 - **Backend:** Python + FastAPI + SQLAlchemy + Alembic
 - **Frontend:** Vue 3 + TypeScript + Vite + Pinia
-- **Base de datos:** PostgreSQL
+- **Base de datos:** MySQL
 
 ## Estructura
 - `backend/` — API FastAPI

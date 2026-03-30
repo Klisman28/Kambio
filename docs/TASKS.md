@@ -23,7 +23,7 @@
 
 | ID | Tarea | Estado | Notas |
 |---|---|---|---|
-| T-0.2.1 | Crear `docker-compose.yml` con postgres + backend + frontend | 🔲 Pendiente | |
+| T-0.2.1 | Crear `docker-compose.yml` con mysql + backend + frontend | 🔲 Pendiente | |
 | T-0.2.2 | Crear `backend/Dockerfile` con hot reload | 🔲 Pendiente | |
 | T-0.2.3 | Crear `frontend/Dockerfile` con hot reload | 🔲 Pendiente | |
 | T-0.2.4 | Crear `backend/.env.example` con todas las variables requeridas | 🔲 Pendiente | |
@@ -172,7 +172,7 @@
 |---|---|---|
 | Tema comprado no disponible | T-0.5.1 al T-0.6.3 | El usuario debe proveer los archivos del tema |
 | Docker Desktop instalado | T-0.2.1 al T-0.2.3 | Confirmar instalación en el equipo |
-| Instancia PostgreSQL accesible | T-0.3.5 al T-0.4.8 | Via Docker o local |
+| Instancia MySQL accesible | T-0.3.5 al T-0.4.8 | Via Docker o local |
 
 ---
 

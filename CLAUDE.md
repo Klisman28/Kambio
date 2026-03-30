@@ -13,7 +13,7 @@ Actúa como arquitecto de software senior y desarrollador backend/frontend senio
 Construir Finances con:
 - backend FastAPI
 - frontend Vue 3 + TypeScript
-- PostgreSQL
+- MySQL
 - tema comprado como base visual
 
 ## Reglas backend

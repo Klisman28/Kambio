@@ -11,7 +11,7 @@ Sistema financiero web para:
 ## Stack fijado
 - Frontend: Vue 3 + TypeScript + Vite
 - Backend: Python + FastAPI
-- Base de datos: PostgreSQL
+- Base de datos: MySQL
 - ORM: SQLAlchemy
 - Migraciones: Alembic
 - Estado frontend: Pinia
