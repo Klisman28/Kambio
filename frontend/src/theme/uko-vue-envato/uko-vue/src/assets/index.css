@@ -7,20 +7,20 @@
   --font-sans: "Inter", sans-serif;
   --radius: 0.5rem;
 
-  --color-foreground: #011e3d;
-  --color-background: #fafafa;
+  --color-foreground: #0f172a;
+  --color-background: #f8fafc;
   --color-card: #ffffff;
-  --color-card-foreground: #011e3d;
-  --color-gradient-2: linear-gradient(250deg, #fff 2.51%, rgba(212, 241, 255, 0.54) 96.8%);
+  --color-card-foreground: #0f172a;
+  --color-gradient-2: linear-gradient(250deg, #fff 2.51%, #d1fae5 96.8%);
 
-  --color-hover: #e5f3fd;
-  --color-active: #e5eef5;
-  --color-border: #e5e7eb;
-  --color-muted: #738499;
+  --color-hover: #f1f5f9;
+  --color-active: #e2e8f0;
+  --color-border: #e2e8f0;
+  --color-muted: #64748b;
 
-  --color-primary: #2499ef;
-  --color-primary-light: #249aef31;
-  --color-primary-dark: #0e73be;
+  --color-primary: #0F766E;
+  --color-primary-light: #D1FAE5;
+  --color-primary-dark: #065F46;
 
   --color-secondary: #f1f6f9;
   --color-secondary-light: #f1f6f95b;
@@ -30,17 +30,17 @@
   --color-info-light: rgba(140, 142, 255, 0.24);
   --color-info-dark: #525b93;
 
-  --color-success: #09ba70;
-  --color-success-light: #09ba702c;
-  --color-success-dark: #209e5f;
+  --color-success: #22c55e;
+  --color-success-light: #dcfce3;
+  --color-success-dark: #16a34a;
 
-  --color-warning: #f49d1a;
-  --color-warning-light: rgba(255, 198, 117, 0.26);
-  --color-warning-dark: #d88619;
+  --color-warning: #f59e0b;
+  --color-warning-light: #fef3c7;
+  --color-warning-dark: #d97706;
 
-  --color-error: #ff316f;
-  --color-error-light: #ff316f33;
-  --color-error-dark: #d62b64;
+  --color-error: #ef4444;
+  --color-error-light: #fee2e2;
+  --color-error-dark: #dc2626;
 
   --color-accent: 210 40% 96.1%;
   --color-accent-foreground: 222.2 47.4% 11.2%;
@@ -106,19 +106,19 @@
 
   .dark {
     --color-foreground: #ffffff;
-    --color-background: #030712;
+    --color-background: #020617;
 
-    --color-card: #10141e;
+    --color-card: #0f172a;
     --color-card-foreground: #ffffff;
 
     --color-border: rgba(255, 255, 255, 0.05);
-    --color-hover: #f3f4f60a;
-    --color-active: #f3f4f60a;
+    --color-hover: rgba(255, 255, 255, 0.05);
+    --color-active: rgba(255, 255, 255, 0.1);
 
     --color-accent: 217.2 32.6% 17.5%;
     --color-accent-foreground: 210 40% 98%;
 
-    --color-gradient-2: linear-gradient(250deg, #1f2937 2.51%, #2499ef47 100%);
+    --color-gradient-2: linear-gradient(250deg, #0f172a 2.51%, #0f766e47 100%);
   }
 
   body {
