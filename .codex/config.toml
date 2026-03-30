@@ -1,0 +1,14 @@
+profile = "default"
+
+[profiles.default]
+model = "gpt-5.4"
+approval_policy = "on-request"
+
+[profiles.deep-review]
+model = "gpt-5-pro"
+model_reasoning_effort = "high"
+approval_policy = "on-request"
+
+[profiles.fast]
+model = "gpt-4.1"
+approval_policy = "on-request"
