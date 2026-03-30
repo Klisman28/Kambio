@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="UKO is a Vue 3 Admin & Client Dashboard Template designed for modern web applications. Discover its sleek design, responsive layout, and advanced features that streamline your workflow."
+    />
+    <meta
+      name="keywords"
+      content="Vue 3, Admin Dashboard, Client Dashboard, Dashboard Template, Responsive Design, Modern Web Applications, Vue.js, Web App UI, Admin UI, Client Management, UI Kit, Admin Template, Web Development, UKO Dashboard."
+    />
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon" />
+    <title>UKO Documentation</title>
+    <!-- CSS FILE -->
+    <link href="./assets/css/atom-one-dark.css" rel="stylesheet" />
+    <link href="./assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body class="relative">
+    <!-- HEADER SECTION -->
+    <header class="bg-white sticky top-0 z-[12] py-6 border-b border-border">
+      <div
+        class="flex items-center justify-between max-w-screen-xl px-4 mx-auto xl:px-0"
+      >
+        <div>
+          <a href="index.html" class="flex items-center gap-3">
+            <img
+              src="./assets/images/UKO-light-version.png"
+              alt="UKO Admin Dashboard"
+              class="w-5"
+            />
+            <p class="text-lg font-semibold">UKO Documentation</p>
+          </a>
+        </div>
+
+        <button id="burger" class="lg:hidden">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </header>
+
+    <!--  SIDEBAR FOR MOBILE SCREEN -->
+    <aside
+      id="sidebar"
+      class="p-6 fixed inset-y-0 left-0 w-64 bg-white transform -translate-x-full lg:translate-x-0 transition-transform duration-300 z-[1111] shadow-lg lg:hidden"
+    >
+      <button id="closeSidebar" class="absolute top-5 right-4">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div class="space-y-5">
+        <div>
+          <a href="index.html" class="flex items-center gap-2">
+            <img
+              src="./assets/images/UKO-light-version.png"
+              alt="UKO-logo"
+              class="w-4"
+            />
+            <p class="font-semibold truncate text-md">UKO</p>
+          </a>
+        </div>
+
+        <ul class="pt-3 space-y-4">
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="index.html">Quick Start</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="folder-structure.html">Folder Structure</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer text-primary"
+          >
+            <a href="layout.html">Layout</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="router.html">Router</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="data-fetching.html">Data Fetching</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="utils-functions.html">Utils Functions</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="rtl.html">RTL</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="dependencies.html">Dependencies</a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- SIDEBAR OVERLAY -->
+    <div
+      id="overlay"
+      class="absolute top-0 left-0 z-20 hidden w-full h-full bg-black opacity-20 lg:hidden"
+    ></div>
+
+    <main class="max-w-screen-xl mx-auto top-22">
+      <!-- SIDEBAR FOR LARGE SCREEN -->
+      <aside class="fixed h-screen w-[260px] hidden lg:block lg:pl-4 xl:pl-0">
+        <ul class="py-5 space-y-4">
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="index.html">Quick Start</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="folder-structure.html">Folder Structure</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer text-primary"
+          >
+            <a href="layout.html">Layout</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="router.html">Router</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="data-fetching.html">Data Fetching</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="utils-functions.html">Utils Functions</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="rtl.html">RTL</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="dependencies.html">Dependencies</a>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- MAIN PAGE CONTENT -->
+      <div
+        class="bg-white divide-y space-y-10 py-8 px-4 sm:px-8 2xl:px-16 lg:ml-[260px]"
+      >
+        <h5 class="font-medium">Layout</h5>
+
+        <!-- LAYOUT -->
+        <div>
+          <h5 class="font-semibold mt-7">Default Layout</h5>
+          <p class="text-base text-muted">
+            Understand folder structure of template and what everything contains
+          </p>
+
+          <div class="pt-4">
+            <pre><code class="rounded-md language-markdown">project
+└─ src
+   └─ layout
+      ├─ header
+      |  ├─ popovers
+      |  ├─ Header.vue
+      ├─ sidebar
+      |  ├─ NavAccordion.vue
+      |  ├─ NavItem.vue
+      |  ├─ SidebarNavigation.vue
+      ├─ DefaultLayout.vue
+      ├─ Mobilesidebar.vue</code></pre>
+          </div>
+
+          <div class="pt-4">
+            <p class="mb-4 text-base font-semibold">Default Layout Code</p>
+
+            <pre><code class="rounded-md">&lt;script setup lang="ts"&gt;
+import Header from "./header/Header.vue";
+import MobileSidebar from "./MobileSidebar.vue";
+import SidebarNavigation from "./sidebar/SidebarNavigation.vue";
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;aside
+    class="bg-white h-screen fixed left-0 top-0 w-[260px] 2xl:w-[280px] z-[1111] hidden lg:block dark:bg-background"&gt;
+    &lt;SidebarNavigation /&gt;
+  &lt;/aside&gt;
+
+  &lt;main class="h-full lg:ml-[260px] 2xl:ml-[280px]"&gt;
+    &lt;Header&gt;&lt;/Header&gt;
+    &lt;MobileSidebar /&gt;
+
+    &lt;div class="mx-auto max-w-screen-2xl px-7 2xl:px-20"&gt;
+      &lt;RouterView /&gt;
+    &lt;/div&gt;
+  &lt;/main&gt;
+&lt;/template&gt;</code></pre>
+          </div>
+        </div>
+
+        <!-- SIDEBAR NAVIGATION -->
+        <div class="space-y-3">
+          <h5 class="font-semibold mt-7">Sidebar Navigation Structure</h5>
+          <p>
+            You can find the navigation file from
+            <span class="px-2 py-1 rounded bg-slate-200 text-primary-darker"
+              >/data/sidebar.ts</span
+            >
+          </p>
+
+          <!-- Code -->
+          <div class="pt-4 space-y-3">
+            <p class="font-semibold">sidebar.ts</p>
+            <pre><code class="rounded-md">export const menuSidebar = [
+  {
+    name: "OVERVIEW",
+    menuItems: [
+      {
+        label: "Learning Management",
+        route: "/learning-management",
+        icon: "Blocks",
+      },
+      {
+        icon: "Target",
+        label: "Job Management",
+        route: "/job-management",
+      },
+
+      {
+        icon: "AreaChart",
+        label: "Analytic",
+        route: "/analytics",
+      },
+      {
+        label: "Sales",
+        route: "/sales",
+        icon: "FilePieChart",
+      },
+      {
+        label: "SaaS",
+        route: "/saas",
+        icon: "BadgeDollarSign",
+      },
+    ],
+  },
+
+  {
+    name: "MANAGEMENT",
+    menuItems: [
+      {
+        label: "Users",
+        route: "/users",
+        icon: "Users",
+        children: [
+          { label: "List", route: "/users" },
+          { label: "Edit", route: "/users/3" },
+          { label: "Create", route: "/users/create" },
+          { label: "Profile", route: "/users/profile" },
+        ],
+      },
+      {
+        label: "Products",
+        route: "/products",
+        icon: "Store",
+        children: [
+          { label: "List", route: "/products" },
+          { label: "Edit", route: "/products/2" },
+          { label: "Create", route: "/products/create" },
+          { label: "Details", route: "/products/overview/1" },
+        ],
+      },
+      {
+        label: "Orders",
+        route: "/orders",
+        icon: "ShoppingBag",
+        children: [
+          { label: "List", route: "/orders" },
+          { label: "Details", route: "/orders/overview/2" },
+        ],
+      },
+      {
+        label: "Invoices",
+        route: "/invoices",
+        icon: "ReceiptText",
+        children: [
+          { label: "List", route: "/invoices" },
+          { label: "Edit", route: "/invoices/INV-0012" },
+          { label: "Create", route: "/invoices/create" },
+          { label: "Details", route: "/invoices/INV-0012/details" },
+        ],
+      },
+      {
+        label: "Ecommerce",
+        route: "/shopping-cart",
+        icon: "ShoppingCart",
+        children: [
+          { label: "Shopping Cart", route: "/shopping-cart" },
+          { label: "Billing & Address", route: "/billing-address" },
+          { label: "Payment", route: "/payment" },
+        ],
+      },
+    ],
+  },
+  {
+    name: "OTHERS",
+    menuItems: [
+      {
+        label: "Account Settings",
+        route: "/settings",
+        icon: "UserCog",
+        children: [
+          { label: "Profile Info", route: "/settings" },
+          { label: "Security", route: "/settings/security" },
+          { label: "Plan & Billing", route: "/settings/plan-billing" },
+          {
+            label: "Two Factor Authentication",
+            route: "/settings/two-factor-authentication",
+          },
+          { label: "Notification", route: "/settings/notification" },
+          {
+            label: "Social Media Links",
+            route: "/settings/social-media-links",
+          },
+          {
+            label: "Account Deactivation",
+            route: "/settings/account-deactivation",
+          },
+        ],
+      },
+      {
+        icon: "Fingerprint",
+        label: "Authentication",
+        route: "/sessions",
+        children: [
+          { label: "Login", route: "/login" },
+          { label: "Register", route: "/register" },
+          { label: "Forget Password", route: "/forget-password" },
+          { label: "Verify Email", route: "/verification" },
+          { label: "Not Found", route: "/**/123" },
+          { label: "Server Error", route: "/server-error" },
+          { label: "Maintenance", route: "/maintenance" },
+        ],
+      },
+
+      {
+        icon: "Headset",
+        label: "Support",
+        route: "/support",
+        children: [
+          { label: "Overview", route: "/support" },
+          { label: "Tickets", route: "/support/tickets" },
+          { label: "Create Ticket", route: "/support/create-ticket" },
+          { label: "FAQs", route: "/support/faqs" },
+          { label: "Contact", route: "/support/contact" },
+        ],
+      },
+    ],
+  },
+];</code></pre>
+          </div>
+        </div>
+
+        <!-- FOOTER NAVIGATION -->
+        <div class="grid grid-cols-2 gap-6 py-10">
+          <div>
+            <a href="folder-structure.html">
+              <div
+                class="px-4 py-3 transition-all duration-300 border rounded-lg text-start hover:border-primary"
+              >
+                <p class="mb-1 text-xs text-muted">Previous page</p>
+                <p class="text-sm font-medium text-primary-darker">
+                  Folder Structure
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <div>
+            <a href="router.html">
+              <div
+                class="px-4 py-3 transition-all duration-300 border rounded text-end hover:border-primary"
+              >
+                <p class="mb-1 text-xs text-muted">Next page</p>
+                <p class="text-sm font-medium text-primary-darker">Router</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ALL THE SCRIPTS -->
+    <script src="./assets/js/lucide.min.js"></script>
+    <script src="./assets/js/highlight.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>

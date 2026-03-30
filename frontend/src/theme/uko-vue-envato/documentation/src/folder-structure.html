@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="UKO is a Vue 3 Admin & Client Dashboard Template designed for modern web applications. Discover its sleek design, responsive layout, and advanced features that streamline your workflow."
+    />
+    <meta
+      name="keywords"
+      content="Vue 3, Admin Dashboard, Client Dashboard, Dashboard Template, Responsive Design, Modern Web Applications, Vue.js, Web App UI, Admin UI, Client Management, UI Kit, Admin Template, Web Development, UKO Dashboard."
+    />
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon" />
+    <title>UKO Documentation</title>
+    <!-- CSS FILE -->
+    <link href="./assets/css/atom-one-dark.css" rel="stylesheet" />
+    <link href="./assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body class="relative">
+    <!-- HEADER SECTION -->
+    <header class="bg-white sticky top-0 z-[12] py-6 border-b border-border">
+      <div
+        class="flex items-center justify-between max-w-screen-xl px-4 mx-auto xl:px-0"
+      >
+        <div>
+          <a href="index.html" class="flex items-center gap-3">
+            <img
+              src="./assets/images/UKO-light-version.png"
+              alt="UKO Admin Dashboard"
+              class="w-5"
+            />
+            <p class="text-lg font-semibold">UKO Documentation</p>
+          </a>
+        </div>
+
+        <button id="burger" class="lg:hidden">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </header>
+
+    <!--  SIDEBAR FOR MOBILE DEVICE -->
+    <aside
+      id="sidebar"
+      class="p-6 fixed inset-y-0 left-0 w-64 bg-white transform -translate-x-full lg:translate-x-0 transition-transform duration-300 z-[1111] shadow-lg lg:hidden"
+    >
+      <button id="closeSidebar" class="absolute top-5 right-4">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div class="space-y-5">
+        <div>
+          <a href="index.html" class="flex items-center gap-2">
+            <img
+              src="./assets/images/UKO-light-version.png"
+              alt="UKO-logo"
+              class="w-4"
+            />
+            <p class="font-semibold truncate text-md">UKO</p>
+          </a>
+        </div>
+
+        <ul class="pt-3 space-y-4">
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="index.html">Quick Start</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer text-primary"
+          >
+            <a href="folder-structure.html">Folder Structure</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="layout.html">Layout</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="router.html">Router</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="data-fetching.html">Data Fetching</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="utils-functions.html">Utils Functions</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="rtl.html">RTL</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="dependencies.html">Dependencies</a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- SIDEBAR OVERLAY -->
+    <div
+      id="overlay"
+      class="absolute top-0 left-0 z-20 hidden w-full h-full bg-black opacity-20 lg:hidden"
+    ></div>
+
+    <main class="max-w-screen-xl mx-auto top-22">
+      <!-- SIDEBAR FOR LARGE SCREEN -->
+      <aside class="fixed h-screen w-[260px] hidden lg:block lg:pl-4 xl:pl-0">
+        <ul class="py-5 space-y-4">
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="index.html">Quick Start</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer text-primary"
+          >
+            <a href="folder-structure.html">Folder Structure</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="layout.html">Layout</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="router.html">Router</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="data-fetching.html">Data Fetching</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="utils-functions.html">Utils Functions</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="rtl.html">RTL</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="dependencies.html">Dependencies</a>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- MAIN PAGE CONTENT -->
+      <div
+        class="bg-white divide-y space-y-10 py-8 px-4 sm:px-8 2xl:px-16 lg:ml-[260px]"
+      >
+        <p class="font-medium">Folder Structure</p>
+
+        <div class="space-y-3">
+          <h5 class="font-semibold mt-7">Folder structure</h5>
+          <p class="italic text-muted">
+            Finding what you need is made simpler by a clear and simple folder
+            structure. The folder structure can be found in the directory
+            UKO-dashboard
+          </p>
+
+          <ul class="ml-5 space-y-6 list-disc list-outside">
+            <li>
+              <span
+                class="px-2 py-1 rounded bg-slate-200/60 text-primary-darker"
+                >public/</span
+              >
+              : Contains all static files, such as JPGs, PNGs, SVGs, and PDFs.
+            </li>
+            <li>
+              <span
+                class="px-2 py-1 rounded bg-slate-200/60 text-primary-darker"
+              >
+                src/__mock__/
+              </span>
+              : Stores all of the project's mock api and data, such as users,
+              products, and invoices.
+            </li>
+            <li>
+              <span
+                class="px-2 py-1 rounded bg-slate-200/60 text-primary-darker"
+              >
+                src/components/
+              </span>
+              : Throughout the entire project, we primarily use shadcn
+              components, along with a few custom reusable components integrated
+              within shadcn components. All reusable components are sourced from
+              this folder.
+            </li>
+            <li>
+              <span
+                class="px-2 py-1 rounded bg-slate-200/60 text-primary-darker"
+              >
+                src/hooks/</span
+              >
+              : Holds global hooks, such as useApexChartOptions (for ApexChart)
+              .
+            </li>
+            <li>
+              <span
+                class="px-2 py-1 rounded bg-slate-200/60 text-primary-darker"
+              >
+                src/layout/</span
+              >
+              : Contains the main layout used for public pages.
+            </li>
+            <li>
+              <span
+                class="px-2 py-1 rounded bg-slate-200/60 text-primary-darker"
+              >
+                src/sections/</span
+              >
+              : There were more than 30 pages total in the project, and inside
+              each page's section (components, styled components, and hooks)
+              were pre-existing and based on the page name. As example, for
+              learning-management page sections course-status, downloads, intro,
+              result etc.
+            </li>
+            <li>
+              <span
+                class="px-2 py-1 rounded bg-slate-200/60 text-primary-darker"
+              >
+                src/pages/</span
+              >
+              : The project included more than 30 pages in total; all of the
+              pages' files were collected in this folder.
+            </li>
+            <li>
+              <span
+                class="px-2 py-1 rounded bg-slate-200/60 text-primary-darker"
+              >
+                src/router/</span
+              >
+              : Contains all route configurations (for projects that require a
+              routing system).
+            </li>
+            <li>
+              <span
+                class="px-2 py-1 rounded bg-slate-200/60 text-primary-darker"
+              >
+                src/utils/</span
+              >
+              : Stores unique, reusable utility methods used throughout the
+              project.
+            </li>
+          </ul>
+
+          <div class="pt-4">
+            <pre><code class="rounded-md language-markdown">UKO-admin-dashboard
+├─ public
+|  ├─ images
+|  ├─ logos
+|  └─ favicon.svg
+│
+├─ src
+│  ├─ assets
+│  │  └─ index.css
+│  │
+│  ├─ __mock__
+│  │  ├─ invoices
+│  │  ├─ orders
+│  │  ├─ products
+│  │  ├─ users
+│  │  ├─ mock.ts
+│  │  ├─ index.ts
+│  │
+│  ├─ components
+│  │  ├─ form
+│  │  │  ├─ SelectField.vue
+│  │  │  ├─ TextareaField.vue
+│  │  │  └─ textField.vue
+│  │  ├─ ui
+│  │  │  ├─ accordion
+│  │  │  |  ├─ Accordion.vue
+│  │  │  |  ├─ AccordionContent.vue
+│  │  │  |  ├─ AccordionItem.vue
+│  │  │  |  └─ AccordionTrigger.vue
+│  │  │  ├─ advance
+│  │  │  |  └─ InputSpin.vue
+│  │  │  ├─ alert
+│  │  │  |  ├─ Alert.vue
+│  │  │  |  ├─ AlertDescription.vue
+│  │  │  |  ├─ AlertTitle.vue
+│  │  │  |  └─ index.ts
+│  │  │  └─ few more folders..
+│  │  ├─ AvatarGroup.vue
+│  │  ├─ Footer.vue
+│  │  ├─ Icon.vue
+│  │  └─ Rating.vue
+│  │
+│  ├─ data
+│  │  ├─ dashboards
+│  │  │  ├─ analytics.ts
+│  │  │  ├─ job-management.ts
+│  │  │  ├─ learning-management.ts
+│  │  │  ├─ sales.ts
+│  │  │  └─ sass
+│  │  ├─ few more folders..
+│  │  ├─ notifications.ts
+│  │  ├─ navigation.ts
+│  │
+│  ├─ hooks
+│  │  ├─ useApexChartOptions.ts
+│  │  └─ useLogo.ts
+│  │
+│  ├─ layout
+│  │  ├─ header
+│  │  |  ├─ popovers
+│  │  |  └─ Header.vue
+│  │  ├─ sidebar
+│  │  |  ├─ NavAccordion.vue
+│  │  |  ├─ NavItem.vue
+│  │  |  └─ SidebarNavigation.vue
+│  │  ├─ DefaultLayout.vue
+│  │  └─ MobileSidebar.vue
+│  │
+│  ├─ lib
+│  │  ├─ colors.ts
+│  │  ├─ currency.ts
+│  │  ├─ dateFormat.ts
+│  │  ├─ libPhoneNumber.ts
+│  │  └─ utils.ts
+│  │
+│  ├─ pages
+│  │  ├─ dashboard
+|  │  │  ├─ Analytics.vue
+|  │  │  ├─ JobManagement.vue
+|  │  │  ├─ LearningManagement.vue
+|  │  │  ├─ SaaS.vue
+|  │  │  └─ Sales.vue
+│  │  ├─ invoices
+|  │  │  ├─ InvoiceCreate.vue
+|  │  │  ├─ InvoiceEdit.vue
+|  │  │  ├─ InvoiceOverview.vue
+|  │  │  └─ Invoices.vue
+│  │  ├─ orders
+|  │  │  ├─ OrderOverview.vue
+|  │  │  └─ Orders.vue
+│  │  ├─ products
+|  │  │  ├─ ProductCreate.vue
+|  │  │  ├─ ProductEdit.vue
+|  │  │  ├─ ProductOverview.vue
+|  │  │  └─ Products.vue
+│  │  ├─ profile
+|  │  │  └─ ProfileSettings.vue
+│  │  ├─ sessions
+|  │  │  ├─ ForgetPassword.vue
+|  │  │  ├─ Login.vue
+|  │  │  ├─ Maintenance.vue
+|  │  │  ├─ NotFound.vue
+|  │  │  ├─ Register.vue
+|  │  │  ├─ ServerError.vue
+|  │  │  └─ Verification.vue
+│  │  ├─ settings
+|  │  │  └─ some more files...
+│  │  ├─ support
+|  │  │  └─ some more files...
+│  │  └─ users
+|  │     └─ some more files...
+│  │
+│  ├─ router
+│  │  ├─ dashboardRoutes.ts
+│  │  ├─ ecommerceRoutes.ts
+│  │  ├─ index.ts
+│  │  ├─ invoiceRoutes.ts
+│  │  ├─ orderRoutes.ts
+│  │  ├─ productRoutes.ts
+│  │  ├─ sessionRoutes.ts
+│  │  ├─ settingsRoutes.ts
+│  │  ├─ supportRoutes.ts
+│  │  └─ userRoutes.ts
+│  │
+│  ├─ sections
+│  │  ├─ analytics
+|  │  │  └─ some more files..
+│  │  ├─ invoices
+|  │  │  └─ some more files..
+│  │  ├─ job-management
+|  │  │  └─ some more files..
+│  │  ├─ learning-management
+|  │  │  └─ some more files..
+│  │  ├─ orders
+|  │  │  └─ some more files..
+│  │  ├─ products
+|  │  │  └─ some more files..
+│  │  ├─ profile
+|  │  │  └─ some more files..
+│  │  ├─ saas
+|  │  │  └─ some more files..
+│  │  ├─ sales
+|  │  │  └─ some more files..
+│  │  ├─ settings
+|  │  │  └─ some more files..
+│  │  ├─ support
+|  │  │  └─ some more files..
+│  │  └─ users
+|  |     └─ some more files..
+│  │
+│  ├─ stores
+│  │  ├─ invoices.ts
+│  │  ├─ orders.ts
+│  │  ├─ products.ts
+│  │  ├─ sidebar.ts
+│  │  └─ users.ts
+│  │
+│  ├─ types
+│  │  ├─ Invoice.ts
+│  │  ├─ Order.ts
+│  │  ├─ Post.ts
+│  │  ├─ Product.ts
+│  │  └─ User.ts
+|  |
+│  ├─ App.vue
+│  └─ main.js
+│
+├─ .gitignore
+├─ components.json
+├─ index.html
+├─ package.json
+├─ package-lock.json
+├─ postcss.config.js
+├─ README.md
+├─ tailwind.config.js
+├─ tsconfig.json
+└─ vite.config.js</code></pre>
+          </div>
+        </div>
+
+        <!-- FOOTER NAVIGATION -->
+        <div class="grid grid-cols-2 gap-6 py-10">
+          <div>
+            <a href="index.html">
+              <div
+                class="px-4 py-3 transition-all duration-300 border rounded-lg text-start hover:border-primary"
+              >
+                <p class="mb-1 text-xs text-muted">Previous page</p>
+                <p class="text-sm font-medium text-primary-darker">
+                  Quick Start
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <div>
+            <a href="layout.html">
+              <div
+                class="px-4 py-3 transition-all duration-300 border rounded-lg text-end hover:border-primary"
+              >
+                <p class="mb-1 text-xs text-muted">Next page</p>
+                <p class="text-sm font-medium text-primary-darker">Layout</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ALL THE SCRIPTS -->
+    <script src="./assets/js/lucide.min.js"></script>
+    <script src="./assets/js/highlight.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>

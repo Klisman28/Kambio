@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="UKO is a Vue 3 Admin & Client Dashboard Template designed for modern web applications. Discover its sleek design, responsive layout, and advanced features that streamline your workflow."
+    />
+    <meta
+      name="keywords"
+      content="Vue 3, Admin Dashboard, Client Dashboard, Dashboard Template, Responsive Design, Modern Web Applications, Vue.js, Web App UI, Admin UI, Client Management, UI Kit, Admin Template, Web Development, UKO Dashboard."
+    />
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon" />
+    <title>UKO Documentation</title>
+    <!-- CSS FILE -->
+    <link href="./assets/css/atom-one-dark.css" rel="stylesheet" />
+    <link href="./assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body class="relative">
+    <!-- HEADER SECTION -->
+    <header class="bg-white sticky top-0 z-[12] py-6 border-b border-border">
+      <div
+        class="flex items-center justify-between max-w-screen-xl px-4 mx-auto xl:px-0"
+      >
+        <div>
+          <a href="index.html" class="flex items-center gap-3">
+            <img
+              src="./assets/images/UKO-light-version.png"
+              alt="UKO Admin Dashboard"
+              class="w-5"
+            />
+            <p class="text-lg font-semibold">UKO Documentation</p>
+          </a>
+        </div>
+
+        <button id="burger" class="lg:hidden">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </header>
+
+    <!--  SIDEBAR FOR MOBILE SCREEN -->
+    <aside
+      id="sidebar"
+      class="p-6 fixed inset-y-0 left-0 w-64 bg-white transform -translate-x-full lg:translate-x-0 transition-transform duration-300 z-[1111] shadow-lg lg:hidden"
+    >
+      <button id="closeSidebar" class="absolute top-5 right-4">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div class="space-y-5">
+        <div>
+          <a href="index.html" class="flex items-center gap-2">
+            <img
+              src="./assets/images/UKO-light-version.png"
+              alt="UKO-logo"
+              class="w-4"
+            />
+            <p class="font-semibold truncate text-md">UKO</p>
+          </a>
+        </div>
+
+        <ul class="pt-3 space-y-4">
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="index.html">Quick Start</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="folder-structure.html">Folder Structure</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="layout.html">Layout</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer text-primary"
+          >
+            <a href="router.html">Router</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="data-fetching.html">Data Fetching</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="utils-functions.html">Utils Functions</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="rtl.html">RTL</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="dependencies.html">Dependencies</a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- SIDEBAR OVERLAY -->
+    <div
+      id="overlay"
+      class="absolute top-0 left-0 z-20 hidden w-full h-full bg-black opacity-20 lg:hidden"
+    ></div>
+
+    <main class="max-w-screen-xl mx-auto top-22">
+      <!-- SIDEBAR FOR LARGE SCREEN -->
+      <aside class="fixed h-screen w-[260px] hidden lg:block lg:pl-4 xl:pl-0">
+        <ul class="py-5 space-y-4">
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="index.html">Quick Start</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="folder-structure.html">Folder Structure</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="layout.html">Layout</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer text-primary"
+          >
+            <a href="router.html">Router</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="data-fetching.html">Data Fetching</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="utils-functions.html">Utils Functions</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="rtl.html">RTL</a>
+          </li>
+          <li
+            class="text-sm font-medium transition-all duration-300 ease-in-out cursor-pointer hover:text-primary"
+          >
+            <a href="dependencies.html">Dependencies</a>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- MAIN PAGE CONTENT -->
+      <div
+        class="bg-white divide-y space-y-10 py-8 px-4 sm:px-8 2xl:px-16 lg:ml-[260px]"
+      >
+        <p class="font-medium">Router</p>
+
+        <!-- ROUTER CONFIGURATION -->
+        <div class="space-y-3">
+          <h5 class="font-semibold mt-7">Router Configuration</h5>
+
+          <p class="italic text-muted">
+            The routing is based on the react-router-dom. You can find all
+            routes inside this file
+            <span class="px-2 py-1 rounded bg-slate-200 text-primary-darker">
+              src/router/index.ts
+            </span>
+            . UKO routing system uses code splitting for improved performance.
+          </p>
+
+          <div class="pt-4">
+            <p class="pb-3 font-semibold">router.ts</p>
+
+            <pre><code class="rounded-md">import { createRouter, createWebHistory } from "vue-router";
+import NProgress from "nprogress";
+
+// ROUTE GROUP FILES
+import { dashboardRoutes } from "./dashboardRoutes";
+import { userRoutes } from "./userRoutes";
+import { productRoutes } from "./productRoutes";
+import { orderRoutes } from "./orderRoutes";
+import { invoiceRoutes } from "./invoiceRoutes";
+import { ecommerceRoutes } from "./ecommerceRoutes";
+import { sessionRoutes } from "./sessionRoutes";
+import { settingsRoutes } from "./settingsRoutes";
+import { supportRoutes } from "./supportRoutes";
+
+// ===================
+declare module "vue-router" {
+  interface RouteMeta {
+    title?: string;
+  }
+}
+// ===================
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [
+    {
+      path: "/",
+      name: "Home",
+      component: () => import("@/pages/home/index.vue"),
+      meta: { title: "UKO - Admin & Client Dashboard Template" },
+    },
+    {
+      path: "/dashboard",
+      name: "Dashboards",
+      redirect: "/learning-management",
+      component: () => import("@/layout/DefaultLayout.vue"),
+      children: [
+        ...dashboardRoutes,
+        ...userRoutes,
+        ...productRoutes,
+        ...orderRoutes,
+        ...invoiceRoutes,
+        ...settingsRoutes,
+        ...ecommerceRoutes,
+        ...supportRoutes,
+      ],
+    },
+
+    ...sessionRoutes,
+
+    {
+      path: "/:pathMatch(.*)*",
+      name: "NotFound",
+      component: () => import("../pages/sessions/NotFound.vue"),
+    },
+  ],
+});
+
+router.beforeEach((to, _from, next) => {
+  // START THE ROUTE PROGRESS BAR.
+  if (to.name) NProgress.configure({ showSpinner: false }).start();
+
+  // SET THE PAGE TITLE.
+  if (to.meta.title) document.title = to.meta.title;
+
+  next();
+});
+
+router.afterEach(() => {
+  // COMPLETE THE ANIMATION OF THE ROUTE PROGRESS BAR.
+  NProgress.done();
+});
+
+export default router;</code></pre>
+          </div>
+        </div>
+
+        <!-- FOLDER STRUCTURE -->
+        <div class="space-y-3">
+          <h5 class="font-semibold mt-7">Folder Structure</h5>
+
+          <p>
+            The routing is based on the react-router-dom. You can find all
+            routes inside this file
+            <span
+              class="px-2 py-1 mr-1 rounded bg-slate-200 text-primary-darker"
+            >
+              src/router/index.ts.
+            </span>
+            UKO routing system uses code splitting for improved performance.
+          </p>
+
+          <div class="pt-4">
+            <pre><code class="rounded-md">└─ router
+   ├─ index.ts
+   ├─ dashboardRoutes.ts
+   ├─ ecommerceRoutes.ts
+   ├─ invoiceRoutes.ts
+   ├─ orderRoutes.ts
+   ├─ productRoutes.ts
+   ├─ sessionRoutes.ts
+   ├─ settingsRoutes.ts
+   ├─ supportRoutes.ts
+   └─ userRoutes.ts</code></pre>
+          </div>
+        </div>
+
+        <!-- HOW TO ADD A NEW ROUTE -->
+        <div class="pt-4 space-y-3">
+          <h5 class="font-semibold mt-7">How to add a new route?</h5>
+
+          <p>
+            To add a new route in your Vue Router configuration, you can follow
+            the example below. Here is a step-by-step guide for adding a new
+            route:
+          </p>
+
+          <ul class="ml-5 space-y-2 list-disc list-outside">
+            <li>
+              Open file
+              <span
+                class="px-2 py-1 mr-1 rounded bg-slate-200 text-primary-darker"
+              >
+                src/router/index.ts
+              </span>
+              and update the following file if you want to add more routes.
+            </li>
+
+            <li>Add the new route within the routes array.</li>
+          </ul>
+
+          <p class="pt-3 font-semibold">router.ts</p>
+
+          <pre><code class="rounded-md">import { createRouter, createWebHistory } from "vue-router";
+
+// ROUTE GROUP FILES
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [
+    {
+      path: "/",
+      name: "home",
+      redirect: "/learning-management",
+      component: () => import("@/layout/DefaultLayout.vue"),
+    },
+    // Existing routes...
+
+    // Added new route
+    {
+      name: "new-route",
+      path: "/new-route",
+      component: () => import("@/pages/NewFile.vue"),
+    },
+  ],
+});
+
+export default router;</code></pre>
+        </div>
+
+        <!-- FOOTER NAVIGATION -->
+        <div class="grid grid-cols-2 gap-6 py-10">
+          <div>
+            <a href="layout.html">
+              <div
+                class="px-4 py-3 transition-all duration-300 border rounded-lg text-start hover:border-primary"
+              >
+                <p class="mb-1 text-xs text-muted">Previous page</p>
+                <p class="text-sm font-medium text-primary-darker">Layout</p>
+              </div>
+            </a>
+          </div>
+
+          <div>
+            <a href="data-fetching.html">
+              <div
+                class="px-4 py-3 transition-all duration-300 border rounded text-end hover:border-primary"
+              >
+                <p class="mb-1 text-xs text-muted">Next page</p>
+                <p class="text-sm font-medium text-primary-darker">
+                  Data Fetching
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ALL THE SCRIPTS -->
+    <script src="./assets/js/lucide.min.js"></script>
+    <script src="./assets/js/highlight.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>
