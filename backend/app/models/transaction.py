@@ -3,8 +3,7 @@ import uuid
 from datetime import datetime
 from decimal import Decimal
 
-from sqlalchemy import CheckConstraint, Column, DateTime, Enum, ForeignKey, Index, Numeric, String, Text
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import CheckConstraint, Column, DateTime, Enum, ForeignKey, Index, Numeric, String, Text, Uuid
 
 from app.db.base_class import Base
 
@@ -28,11 +27,11 @@ class TransactionStatus(str, enum.Enum):
 class Transaction(Base):
     __tablename__ = "transactions"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    id = Column(Uuid(as_uuid=True), primary_key=True, default=uuid.uuid4)
     code = Column(String(30), unique=True, nullable=False, index=True)
 
-    client_id = Column(UUID(as_uuid=True), ForeignKey("clients.id"), nullable=False)
-    cash_session_id = Column(UUID(as_uuid=True), ForeignKey("cash_sessions.id"), nullable=False)
+    client_id = Column(Uuid(as_uuid=True), ForeignKey("clients.id"), nullable=False)
+    cash_session_id = Column(Uuid(as_uuid=True), ForeignKey("cash_sessions.id"), nullable=False)
 
     transaction_type = Column(
         Enum(TransactionType, name="transaction_type"),
@@ -51,12 +50,12 @@ class Transaction(Base):
     )
 
     # Anulación
-    voided_by = Column(UUID(as_uuid=True), ForeignKey("users.id"))
+    voided_by = Column(Uuid(as_uuid=True), ForeignKey("users.id"))
     voided_at = Column(DateTime(timezone=True))
     void_reason = Column(Text)
-    void_of_id = Column(UUID(as_uuid=True), ForeignKey("transactions.id"))
+    void_of_id = Column(Uuid(as_uuid=True), ForeignKey("transactions.id"))
 
-    created_by = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
+    created_by = Column(Uuid(as_uuid=True), ForeignKey("users.id"), nullable=False)
     created_at = Column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)
     notes = Column(Text)
 

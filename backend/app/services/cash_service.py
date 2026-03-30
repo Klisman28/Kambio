@@ -38,6 +38,7 @@ class CashService:
             opening_amount_gtq=payload.opening_amount_gtq,
             notes=payload.notes,
             opened_by=current_user.id,
+            unique_open=1,  # garantiza constraint DB de una sola caja abierta
         )
         self.repo.create(cash)
         self.audit.log(
@@ -77,6 +78,7 @@ class CashService:
             )
 
         cash.status = CashStatus.closed
+        cash.unique_open = None  # libera el constraint para que otra caja pueda abrirse
         cash.closing_amount_mxn = payload.closing_amount_mxn
         cash.closing_amount_gtq = payload.closing_amount_gtq
         cash.difference_mxn = payload.closing_amount_mxn - cash.opening_amount_mxn

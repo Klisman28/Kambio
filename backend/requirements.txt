@@ -5,7 +5,8 @@ uvicorn[standard]==0.29.0
 # Database
 sqlalchemy==2.0.30
 alembic==1.13.1
-psycopg2-binary==2.9.9
+pymysql==1.1.0
+cryptography==42.0.8  # requerido por pymysql para auth caching_sha2_password (MySQL 8.0)
 
 # Auth
 python-jose[cryptography]==3.3.0

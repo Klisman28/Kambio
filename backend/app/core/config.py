@@ -1,5 +1,8 @@
+import json
+from typing import Any, List
+
+from pydantic import field_validator
 from pydantic_settings import BaseSettings
-from typing import List
 
 
 class Settings(BaseSettings):
@@ -17,12 +20,25 @@ class Settings(BaseSettings):
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
 
-    # CORS
-    CORS_ORIGINS: List[str] = ["http://localhost:5173"]
+    # CORS — tipo Any para evitar que pydantic-settings intente JSON-decodificar
+    # antes del validator. Acepta "url1,url2" o '["url1","url2"]'.
+    CORS_ORIGINS: Any = ["http://localhost:5173"]
 
     # Semilla de admin (solo dev)
     SEED_ADMIN_EMAIL: str = "admin@kambio.dev"
     SEED_ADMIN_PASSWORD: str = "changeme"
+
+    @field_validator("CORS_ORIGINS", mode="before")
+    @classmethod
+    def parse_cors_origins(cls, v: Any) -> List[str]:
+        if isinstance(v, list):
+            return v
+        if isinstance(v, str):
+            v = v.strip()
+            if v.startswith("["):
+                return json.loads(v)
+            return [origin.strip() for origin in v.split(",") if origin.strip()]
+        return v
 
     class Config:
         env_file = ".env"

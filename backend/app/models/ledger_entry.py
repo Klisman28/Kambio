@@ -2,8 +2,7 @@ import enum
 import uuid
 from datetime import datetime
 
-from sqlalchemy import CheckConstraint, Column, DateTime, Enum, ForeignKey, Index, Numeric
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import CheckConstraint, Column, DateTime, Enum, ForeignKey, Index, Numeric, Uuid
 
 from app.db.base_class import Base
 
@@ -21,10 +20,10 @@ class EntryDirection(str, enum.Enum):
 class LedgerEntry(Base):
     __tablename__ = "ledger_entries"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    id = Column(Uuid(as_uuid=True), primary_key=True, default=uuid.uuid4)
 
-    transaction_id = Column(UUID(as_uuid=True), ForeignKey("transactions.id"), nullable=False)
-    client_id = Column(UUID(as_uuid=True), ForeignKey("clients.id"), nullable=False)
+    transaction_id = Column(Uuid(as_uuid=True), ForeignKey("transactions.id"), nullable=False)
+    client_id = Column(Uuid(as_uuid=True), ForeignKey("clients.id"), nullable=False)
 
     currency = Column(Enum(Currency, name="currency"), nullable=False)
     direction = Column(Enum(EntryDirection, name="entry_direction"), nullable=False)

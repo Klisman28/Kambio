@@ -1,7 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import BigInteger, Column, DateTime, ForeignKey, String
-from sqlalchemy.dialects.postgresql import INET, JSONB, UUID
+from sqlalchemy import BigInteger, Column, DateTime, ForeignKey, String, JSON, Uuid
 
 from app.db.base_class import Base
 
@@ -16,13 +15,13 @@ class AuditEvent(Base):
 
     id = Column(BigInteger, primary_key=True, autoincrement=True)
 
-    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL"))
+    user_id = Column(Uuid(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL"))
     action = Column(String(100), nullable=False)       # ej. "transaction.create"
     resource_type = Column(String(50), nullable=False)  # ej. "transaction"
-    resource_id = Column(UUID(as_uuid=True))
+    resource_id = Column(Uuid(as_uuid=True))
 
-    ip_address = Column(INET)
-    payload = Column(JSONB)  # snapshot antes/después del cambio
+    ip_address = Column(String(45))
+    payload = Column(JSON)  # snapshot antes/después del cambio
 
     created_at = Column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)
 
