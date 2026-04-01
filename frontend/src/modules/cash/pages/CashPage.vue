@@ -24,7 +24,7 @@
     </div>
 
     <!-- Caja abierta -->
-    <div v-else-if="currentSession && currentSession.status === 'OPEN'" class="space-y-6">
+    <div v-else-if="currentSession && currentSession.status === 'open'" class="space-y-6">
       <!-- Status Banner -->
       <div class="bg-success-light border border-success/30 rounded-xl p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div class="flex items-center gap-3">
@@ -59,7 +59,7 @@
     </div>
 
     <!-- Caja cerrada (último cierre) -->
-    <div v-else-if="currentSession && currentSession.status === 'CLOSED'" class="space-y-6">
+    <div v-else-if="currentSession && currentSession.status === 'closed'" class="space-y-6">
       <div class="bg-card border border-border rounded-xl shadow-sm p-8 text-center space-y-4">
         <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-light">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary-dark"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
@@ -102,6 +102,17 @@
         </div>
 
         <Button @click="showOpenModal = true" class="mt-4">Abrir Nueva Caja</Button>
+      </div>
+    </div>
+    
+    <!-- Fallback default just in case -->
+    <div v-else class="space-y-6">
+      <div class="bg-error-light border border-error/30 rounded-xl p-8 text-center space-y-4">
+        <h3 class="text-lg font-bold text-error-dark">Estado de caja desconocido</h3>
+        <p class="text-sm text-error-dark/70">
+          La caja retornó un estado inesperado: {{ currentSession?.status }}
+        </p>
+        <Button @click="showOpenModal = true" variant="outline" class="border-error text-error hover:bg-error-light">Forzar Apertura</Button>
       </div>
     </div>
 

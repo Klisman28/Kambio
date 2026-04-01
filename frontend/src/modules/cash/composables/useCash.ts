@@ -4,7 +4,7 @@ import { push } from 'notivue'
 
 export interface CashSession {
   id: string
-  status: 'OPEN' | 'CLOSED'
+  status: 'open' | 'closed'
   opening_amount_mxn: string
   opening_amount_gtq: string
   closing_amount_mxn?: string
