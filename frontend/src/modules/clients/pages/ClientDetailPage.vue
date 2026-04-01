@@ -73,7 +73,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { Button } from '@theme/components/ui/button'
+import { Button } from '@/theme/components/ui/button'
 import {
   Table,
   TableBody,
@@ -81,7 +81,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@theme/components/ui/table'
+} from '@/theme/components/ui/table'
 import http from '@/services/http'
 
 const route = useRoute()

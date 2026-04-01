@@ -7,10 +7,10 @@
   --font-sans: "Inter", sans-serif;
   --radius: 0.5rem;
 
-  --color-foreground: #0f172a;
+  --color-foreground: #334155;
   --color-background: #f8fafc;
   --color-card: #ffffff;
-  --color-card-foreground: #0f172a;
+  --color-card-foreground: #334155;
   --color-gradient-2: linear-gradient(250deg, #fff 2.51%, #d1fae5 96.8%);
 
   --color-hover: #f1f5f9;
