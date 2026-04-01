@@ -1,6 +1,7 @@
+from typing import List, Optional
 from uuid import UUID
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
 from app.db.session import get_db
@@ -10,6 +11,17 @@ from app.services.auth_service import get_current_user
 from app.services.transaction_service import TransactionService
 
 router = APIRouter(prefix="/transactions", tags=["transactions"])
+
+
+@router.get("", response_model=List[TransactionOut], summary="Listar transacciones")
+def list_transactions(
+    skip: int = Query(0, ge=0),
+    limit: int = Query(50, ge=1, le=200),
+    status: Optional[str] = Query(None, description="Filtrar por estado: ACTIVE o VOIDED"),
+    db: Session = Depends(get_db),
+    _: User = Depends(get_current_user),
+):
+    return TransactionService(db).list(skip=skip, limit=limit, status=status)
 
 
 @router.post("", response_model=TransactionOut, status_code=201, summary="Registrar transacción")

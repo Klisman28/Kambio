@@ -31,6 +31,17 @@ class TransactionRepository:
             .all()
         )
 
+    def list_all(
+        self,
+        skip: int = 0,
+        limit: int = 50,
+        status: str | None = None,
+    ) -> List[Transaction]:
+        q = self.db.query(Transaction)
+        if status:
+            q = q.filter(Transaction.status == status)
+        return q.order_by(Transaction.created_at.desc()).offset(skip).limit(limit).all()
+
     def count_all(self) -> int:
         from sqlalchemy import func
         return self.db.query(func.count(Transaction.id)).scalar() or 0

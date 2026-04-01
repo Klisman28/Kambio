@@ -23,6 +23,9 @@ class TransactionService:
         self.audit = AuditService(db)
         self.db = db
 
+    def list(self, skip: int = 0, limit: int = 50, status: str | None = None):
+        return self.repo.list_all(skip=skip, limit=limit, status=status)
+
     def create(self, payload: TransactionCreate, current_user: User) -> Transaction:
         # 1. Verificar caja abierta
         cash = self.cash_repo.get_open()
