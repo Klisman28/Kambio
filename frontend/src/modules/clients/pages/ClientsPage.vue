@@ -162,10 +162,18 @@ const closeModal = () => {
 const submitForm = async () => {
   formLoading.value = true
   try {
+    const payload = {
+      full_name: form.full_name,
+      id_number: form.id_number || undefined,
+      email: form.email || undefined,
+      phone: form.phone || undefined,
+      is_active: form.is_active
+    }
+
     if (isEditing.value && currentClientId.value) {
-      await updateClient(currentClientId.value, { ...form })
+      await updateClient(currentClientId.value, payload)
     } else {
-      await createClient({ ...form })
+      await createClient(payload)
     }
     closeModal()
   } catch (e) {
