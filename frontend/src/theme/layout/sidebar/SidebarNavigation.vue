@@ -7,9 +7,10 @@ import { navigation } from "@/theme/data/navigation";
 </script>
 
 <template>
-  <div class="px-4 py-5 mb-2">
-    <RouterLink to="/">
-      <img src="/logos/uko.png" class="w-7 cursor-pointer" alt="Uko Admin & Client Dashboard" />
+  <div class="px-5 py-5 mb-2">
+    <RouterLink to="/dashboard" class="flex items-center gap-2">
+      <span class="text-xl font-bold text-primary tracking-tight">Kambio</span>
+      <span class="text-[10px] font-semibold text-muted uppercase tracking-widest mt-0.5">MXN · GTQ</span>
     </RouterLink>
   </div>
 

@@ -1,23 +1,23 @@
 <script setup lang="ts">
-import { useRoute, useRouter } from "vue-router";
-// SHADCDN COMPONENTS
-import { Avatar, AvatarFallback, AvatarImage } from "@/theme/components/ui/avatar";
+import { useRouter } from "vue-router";
+import { storeToRefs } from "pinia";
+import { Avatar, AvatarFallback } from "@/theme/components/ui/avatar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/theme/components/ui/popover";
-// CUSTOM COMPONENT
 import Icon from "@/theme/components/Icon.vue";
-// AUTH COMPOSABLE
-import { useAuth } from "@/theme/auth/useAuth";
+import { useAuthStore } from "@/modules/auth/stores/authStore";
 
-const route = useRoute();
 const router = useRouter();
-const { state, logout } = useAuth();
+const authStore = useAuthStore();
+const { user } = storeToRefs(authStore);
 
-const handleLogout = async () => {
-  await logout();
-  router.replace({
-    name: "Login",
-    query: { redirect: route.fullPath }
-  });
+const initials = () => {
+  const name = user.value?.full_name ?? "";
+  return name.split(" ").map((w) => w[0]).slice(0, 2).join("").toUpperCase() || "K";
+};
+
+const handleLogout = () => {
+  authStore.logout();
+  router.replace({ name: "login" });
 };
 </script>
 
@@ -26,38 +26,26 @@ const handleLogout = async () => {
     <PopoverTrigger as-child>
       <div class="flex gap-2 items-center py-2 pr-2 pl-3 rounded-full cursor-pointer bg-hover">
         <p class="text-[13px] font-semibold text-nowrap">
-          Hi. {{ state?.user?.displayName || "John Smith" }}
+          {{ user?.full_name ?? "Usuario" }}
         </p>
-
         <Avatar size="xs" class="border border-white">
-          <AvatarImage v-if="state?.user?.photoURL" :src="state?.user?.photoURL" alt="User" />
-          <AvatarFallback>{{ state?.user?.displayName?.charAt(0) }}</AvatarFallback>
+          <AvatarFallback>{{ initials() }}</AvatarFallback>
         </Avatar>
       </div>
     </PopoverTrigger>
 
-    <PopoverContent class="w-[200px] py-2 px-0 rounded-lg">
+    <PopoverContent class="w-[180px] py-2 px-0 rounded-lg">
       <ul class="text-sm cursor-pointer">
-        <li class="flex gap-2 items-center px-5 py-2 transition-all hover:bg-hover">
-          <Icon name="User" :size="18" class="text-muted" /> Profile
+        <li class="px-5 py-2 text-xs text-muted font-medium truncate">
+          {{ user?.email ?? "" }}
         </li>
-
-        <li class="flex gap-2 items-center px-5 py-2 transition-all hover:bg-hover">
-          <Icon name="Settings" :size="18" class="text-muted" /> Account
-        </li>
-
-        <li class="flex gap-2 items-center px-5 py-2 transition-all hover:bg-hover">
-          <Icon name="Users" :size="18" class="text-muted" /> Manage Team
-        </li>
-
         <li class="py-1">
           <hr class="border-0 border-b border-b-gray-200 dark:border-b-gray-700" />
         </li>
-
         <li
-          class="flex gap-2 items-center px-5 py-2 transition-all hover:bg-hover"
+          class="flex gap-2 items-center px-5 py-2 transition-all hover:bg-hover text-error"
           @click="handleLogout()">
-          <Icon name="LogOut" :size="18" class="text-muted" /> Log Out
+          <Icon name="LogOut" :size="16" /> Cerrar sesión
         </li>
       </ul>
     </PopoverContent>

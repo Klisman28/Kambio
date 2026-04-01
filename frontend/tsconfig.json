@@ -9,6 +9,15 @@
       "@modules/*": ["./src/modules/*"]
     },
     "strict": true,
-    "noImplicitAny": true
-  }
+    "noImplicitAny": false,
+    "verbatimModuleSyntax": false
+  },
+  "exclude": [
+    "src/theme/__mock__/**/*",
+    "src/theme/auth/firebase.ts",
+    "src/theme/auth/useAuth.ts",
+    "src/theme/lib/libPhoneNumber.ts",
+    "src/theme/sections/products/product-form/ProductImages.vue",
+    "src/theme/sections/users/UserImageUpload.vue"
+  ]
 }

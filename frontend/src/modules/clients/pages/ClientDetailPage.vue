@@ -83,16 +83,28 @@ import {
   TableRow,
 } from '@/theme/components/ui/table'
 import http from '@/services/http'
+import type { Client } from '@/modules/clients/composables/useClients'
+
+interface Balance { client_id: string; mxn: number; gtq: number }
+interface LedgerEntry {
+  id: string
+  transaction_id: string
+  currency: 'MXN' | 'GTQ'
+  direction: 'CREDIT' | 'DEBIT'
+  amount: number
+  balance_after: number
+  created_at: string
+}
 
 const route = useRoute()
 const clientId = route.params.id as string
 
-const client = ref<any>(null)
-const balance = ref<any>(null)
-const ledger = ref<any[]>([])
+const client = ref<Client | null>(null)
+const balance = ref<Balance | null>(null)
+const ledger = ref<LedgerEntry[]>([])
 const loading = ref(true)
 
-const formatCurrency = (val: string | number) => {
+const formatCurrency = (val: string | number | undefined | null) => {
   if (val === undefined || val === null) return '0.00'
   return Number(val).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
 }

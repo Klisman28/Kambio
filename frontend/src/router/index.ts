@@ -66,8 +66,7 @@ const router = createRouter({
         },
       ]
     },
-    // Redirecciones
-    { path: '/', redirect: '/dashboard' },
+    // Catch-all
     { path: '/:pathMatch(.*)*', redirect: '/dashboard' },
   ],
 })
@@ -75,6 +74,12 @@ const router = createRouter({
 // Navigation guard: protege rutas autenticadas
 router.beforeEach((to) => {
   const authStore = useAuthStore()
+
+  // Ruta raíz: redirigir según estado de auth
+  if (to.path === '/') {
+    return authStore.isAuthenticated ? { name: 'dashboard' } : { name: 'login' }
+  }
+
   if (to.meta.requiresAuth && !authStore.isAuthenticated) {
     return { name: 'login', query: { redirect: to.fullPath } }
   }
