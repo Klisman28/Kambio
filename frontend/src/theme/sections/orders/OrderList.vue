@@ -10,27 +10,27 @@ import {
   TableBody,
   TableHead,
   TableHeader
-} from "@/components/ui/table";
+} from "@/theme/components/ui/table";
 import {
   Menubar,
   MenubarItem,
   MenubarMenu,
   MenubarContent,
   MenubarTrigger
-} from "@/components/ui/menubar";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge, BadgeVariants } from "@/components/ui/badge";
+} from "@/theme/components/ui/menubar";
+import { Card } from "@/theme/components/ui/card";
+import { Button } from "@/theme/components/ui/button";
+import { Badge, BadgeVariants } from "@/theme/components/ui/badge";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
-import TablePagination from "@/components/TablePagination.vue";
+import Icon from "@/theme/components/Icon.vue";
+import TablePagination from "@/theme/components/TablePagination.vue";
 import { OrderListSkeleton } from "./skeletons";
 // ORDER STORE
-import { useOrders } from "@/stores/orders";
+import { useOrders } from "@/theme/stores/orders";
 // CUSTOM UTILS METHODS
-import { cn } from "@/lib/utils";
-import { currency } from "@/lib/currency";
-import { dateFormat } from "@/lib/dateFormat";
+import { cn } from "@/theme/lib/utils";
+import { currency } from "@/theme/lib/currency";
+import { dateFormat } from "@/theme/lib/dateFormat";
 
 const { resetFilter, deleteOrder, state } = useOrders();
 const { filters, meta, orders, isLoading } = toRefs(state);

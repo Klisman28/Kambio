@@ -9,16 +9,16 @@ import {
   TableCell,
   TableHead,
   TableHeader
-} from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+} from "@/theme/components/ui/table";
+import { Button } from "@/theme/components/ui/button";
+import { Card, CardContent } from "@/theme/components/ui/card";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
+import Icon from "@/theme/components/Icon.vue";
 // CUSTOM UTILS METHODS
-import { currency } from "@/lib/currency";
-import { dateFormat } from "@/lib/dateFormat";
+import { currency } from "@/theme/lib/currency";
+import { dateFormat } from "@/theme/lib/dateFormat";
 // TYPES
-import { Invoice } from "@/types/Invoice";
+import { Invoice } from "@/theme/types/Invoice";
 
 // PROPS
 const { invoice } = defineProps<{ invoice: Invoice }>();

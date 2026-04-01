@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { TableCell, TableRow } from "@/components/ui/table";
+import { TableCell, TableRow } from "@/theme/components/ui/table";
 // CUSTOM UTILS METHODS
-import { cn } from "@/lib/utils";
-import { currency } from "@/lib/currency";
+import { cn } from "@/theme/lib/utils";
+import { currency } from "@/theme/lib/currency";
 
 defineProps<{ name: string; value: number; isLast?: boolean }>();
 </script>

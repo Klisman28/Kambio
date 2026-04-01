@@ -2,9 +2,9 @@
 import { onMounted, ref } from "vue";
 import axios from "axios";
 // SHADCN COMPONENT
-import { SelectItem } from "@/components/ui/select";
+import { SelectItem } from "@/theme/components/ui/select";
 // CUSTOM COMPONENT
-import SelectField from "@/components/form/SelectField.vue";
+import SelectField from "@/theme/components/form/SelectField.vue";
 // TYPES
 type Category = { id: number; title: string; value: string };
 

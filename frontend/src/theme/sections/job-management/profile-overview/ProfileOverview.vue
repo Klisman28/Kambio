@@ -1,14 +1,14 @@
 <script setup lang="ts">
 // SHADCN COMPONENTS
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/theme/components/ui/badge";
+import { Button } from "@/theme/components/ui/button";
+import { Card, CardContent } from "@/theme/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/theme/components/ui/avatar";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
+import Icon from "@/theme/components/Icon.vue";
 import JobPostItem from "./JobPostItem.vue";
 // CUSTOM DATA
-import { recentJobPosts } from "@/data/dashboards/job-management";
+import { recentJobPosts } from "@/theme/data/dashboards/job-management";
 </script>
 
 <template>

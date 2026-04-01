@@ -4,8 +4,8 @@ import {
   AccordionItem,
   AccordionTrigger,
   AccordionContent
-} from "@/components/ui/accordion";
-import { Badge } from "@/components/ui/badge";
+} from "@/theme/components/ui/accordion";
+import { Badge } from "@/theme/components/ui/badge";
 
 // ==============================================================
 interface Item {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardTitle } from "@/theme/components/ui/card";
 </script>
 
 <template>

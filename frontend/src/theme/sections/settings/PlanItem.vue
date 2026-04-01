@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Card, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
+import { Card, CardTitle, CardDescription, CardFooter } from "@/theme/components/ui/card";
 // CUSTOM UTILS METHOD
-import { currency } from "@/lib/currency";
+import { currency } from "@/theme/lib/currency";
 
 defineProps<{ name: string; description: string; price: number; isCurrent?: boolean }>();
 </script>

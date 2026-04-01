@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import VueApexCharts from "vue3-apexcharts";
 // SHADCN COMPONENTS
-import { Card, CardTitle } from "@/components/ui/card";
+import { Card, CardTitle } from "@/theme/components/ui/card";
 import {
   Select,
   SelectItem,
@@ -10,9 +10,9 @@ import {
   SelectValue,
   SelectContent,
   SelectTrigger
-} from "@/components/ui/select";
+} from "@/theme/components/ui/select";
 // CUSTOM COMPOSABLE
-import { useApexChartOptions } from "@/hooks/useApexChartOptions";
+import { useApexChartOptions } from "@/theme/hooks/useApexChartOptions";
 
 const DATA = [
   [{ name: "sat", data: [31, 40, 28, 51, 40, 60, 50, 85] }],

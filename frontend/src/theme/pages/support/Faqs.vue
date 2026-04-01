@@ -1,12 +1,12 @@
 <script setup lang="ts">
 // SHADCN COMPONENTS
-import { Card, CardTitle } from "@/components/ui/card";
+import { Card, CardTitle } from "@/theme/components/ui/card";
 // CUSTOM COMPONENT
-import Icon from "@/components/Icon.vue";
-import AccordionWidget from "@/sections/support/AccordionWidget.vue";
+import Icon from "@/theme/components/Icon.vue";
+import AccordionWidget from "@/theme/sections/support/AccordionWidget.vue";
 // DATA LIST
-import { faqs } from "@/data/support/faqs";
-import { socialLinks } from "@/data/support/social-links";
+import { faqs } from "@/theme/data/support/faqs";
+import { socialLinks } from "@/theme/data/support/social-links";
 
 // STATE
 const defaultValue = "item-1";

@@ -4,8 +4,8 @@ import { defineStore } from "pinia";
 import { push } from "notivue";
 import axios from "axios";
 // TYPES
-import { Invoice, InvoicePayload } from "@/types/Invoice";
-import { Meta } from "@/types/Meta";
+import { Invoice, InvoicePayload } from "@/theme/types/Invoice";
+import { Meta } from "@/theme/types/Meta";
 
 // ==============================================================
 interface Data {

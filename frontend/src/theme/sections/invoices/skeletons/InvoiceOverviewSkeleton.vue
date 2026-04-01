@@ -8,8 +8,8 @@ import {
   TableCell,
   TableHead,
   TableHeader
-} from "@/components/ui/table";
-import { Card, CardContent } from "@/components/ui/card";
+} from "@/theme/components/ui/table";
+import { Card, CardContent } from "@/theme/components/ui/card";
 </script>
 
 <template>

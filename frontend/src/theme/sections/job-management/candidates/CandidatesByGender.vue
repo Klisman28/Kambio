@@ -2,9 +2,9 @@
 import { ref } from "vue";
 import VueApexCharts from "vue3-apexcharts";
 // SHADCN COMPONENTS
-import { Card, CardTitle } from "@/components/ui/card";
+import { Card, CardTitle } from "@/theme/components/ui/card";
 // CUSTOM COMPOSABLE
-import { useApexChartOptions } from "@/hooks/useApexChartOptions";
+import { useApexChartOptions } from "@/theme/hooks/useApexChartOptions";
 
 const series = ref([65, 35]);
 

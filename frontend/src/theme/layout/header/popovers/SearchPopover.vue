@@ -9,10 +9,10 @@ import {
   CommandInput,
   CommandShortcut,
   CommandSeparator
-} from "@/components/ui/command";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+} from "@/theme/components/ui/command";
+import { Dialog, DialogContent, DialogTrigger } from "@/theme/components/ui/dialog";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
+import Icon from "@/theme/components/Icon.vue";
 </script>
 
 <template>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // SHADCN COMPONENTS
-import { CardContent } from "@/components/ui/card";
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import { CardContent } from "@/theme/components/ui/card";
+import { Table, TableBody, TableCell, TableRow } from "@/theme/components/ui/table";
 // CUSTOM COMPONENT
 import ProductReviewSkeleton from "./ProductReviewSkeleton.vue";
 </script>

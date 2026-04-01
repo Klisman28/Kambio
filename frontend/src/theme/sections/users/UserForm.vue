@@ -3,16 +3,16 @@ import { useRouter } from "vue-router";
 import { useForm } from "vee-validate";
 import * as yup from "yup";
 // SHADCN COMPONENTS
-import { Button } from "@/components/ui/button";
-import { SelectItem } from "@/components/ui/select";
+import { Button } from "@/theme/components/ui/button";
+import { SelectItem } from "@/theme/components/ui/select";
 // CUSTOM COMPONENTS
 import UserImageUpload from "./UserImageUpload.vue";
-import TextField from "@/components/form/TextField.vue";
-import SelectField from "@/components/form/SelectField.vue";
+import TextField from "@/theme/components/form/TextField.vue";
+import SelectField from "@/theme/components/form/SelectField.vue";
 // USER STORE
-import { useUsers } from "@/stores/users";
+import { useUsers } from "@/theme/stores/users";
 // TYPES
-import { User } from "@/types/User";
+import { User } from "@/theme/types/User";
 
 const { user } = defineProps<{ user?: User }>();
 

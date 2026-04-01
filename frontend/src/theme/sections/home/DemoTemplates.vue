@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/theme/components/ui/badge";
 import TemplateCard from "./TemplateCard.vue";
 // DATA LIST
-import { demos, managements, settings } from "@/sections/home/data/demoList";
+import { demos, managements, settings } from "@/theme/sections/home/data/demoList";
 </script>
 
 <template>

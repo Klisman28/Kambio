@@ -9,10 +9,10 @@ import {
   SelectValue,
   SelectContent,
   SelectTrigger
-} from "@/components/ui/select";
-import { Card, CardTitle } from "@/components/ui/card";
+} from "@/theme/components/ui/select";
+import { Card, CardTitle } from "@/theme/components/ui/card";
 // CUSTOM COMPOSABLE
-import { useApexChartOptions } from "@/hooks/useApexChartOptions";
+import { useApexChartOptions } from "@/theme/hooks/useApexChartOptions";
 
 const selected = ref("0");
 const series = ref([

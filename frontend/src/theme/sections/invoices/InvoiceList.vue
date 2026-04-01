@@ -10,26 +10,26 @@ import {
   TableBody,
   TableHead,
   TableHeader
-} from "@/components/ui/table";
+} from "@/theme/components/ui/table";
 import {
   Menubar,
   MenubarItem,
   MenubarMenu,
   MenubarContent,
   MenubarTrigger
-} from "@/components/ui/menubar";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge, BadgeVariants } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+} from "@/theme/components/ui/menubar";
+import { Card } from "@/theme/components/ui/card";
+import { Button } from "@/theme/components/ui/button";
+import { Badge, BadgeVariants } from "@/theme/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/theme/components/ui/avatar";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
-import TablePagination from "@/components/TablePagination.vue";
+import Icon from "@/theme/components/Icon.vue";
+import TablePagination from "@/theme/components/TablePagination.vue";
 // USER STORE
-import { useInvoices } from "@/stores/invoices";
+import { useInvoices } from "@/theme/stores/invoices";
 // CUSTOM UTILS METHODS
-import { currency } from "@/lib/currency";
-import { dateFormat } from "@/lib/dateFormat";
+import { currency } from "@/theme/lib/currency";
+import { dateFormat } from "@/theme/lib/dateFormat";
 import { InvoiceListSkeleton } from "./skeletons";
 
 const { state, resetFilter, deleteInvoice } = useInvoices();

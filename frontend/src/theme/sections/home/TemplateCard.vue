@@ -2,8 +2,8 @@
 import { useRouter } from "vue-router";
 import { useDark } from "@vueuse/core";
 // SHADCN COMPONENTS
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/theme/components/ui/button";
+import { Card, CardContent } from "@/theme/components/ui/card";
 
 // ===========================
 interface Props {

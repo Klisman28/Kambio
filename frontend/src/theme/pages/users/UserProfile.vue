@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import About from "@/sections/profile/About.vue";
-import Groups from "@/sections/profile/Groups.vue";
-import Gallery from "@/sections/profile/Gallery.vue";
-import PostList from "@/sections/profile/PostList.vue";
-import Followers from "@/sections/profile/Followers.vue";
-import PostCompose from "@/sections/profile/PostCompose.vue";
-import ProfileIntro from "@/sections/profile/ProfileIntro.vue";
+import About from "@/theme/sections/profile/About.vue";
+import Groups from "@/theme/sections/profile/Groups.vue";
+import Gallery from "@/theme/sections/profile/Gallery.vue";
+import PostList from "@/theme/sections/profile/PostList.vue";
+import Followers from "@/theme/sections/profile/Followers.vue";
+import PostCompose from "@/theme/sections/profile/PostCompose.vue";
+import ProfileIntro from "@/theme/sections/profile/ProfileIntro.vue";
 </script>
 
 <template>

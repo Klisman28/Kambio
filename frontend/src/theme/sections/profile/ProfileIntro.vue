@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Card, CardContent } from "@/theme/components/ui/card";
+import { Avatar, AvatarImage, AvatarFallback } from "@/theme/components/ui/avatar";
 </script>
 
 <template>

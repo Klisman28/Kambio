@@ -10,14 +10,14 @@ import {
   TableCell,
   TableHead,
   TableHeader
-} from "@/components/ui/table";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+} from "@/theme/components/ui/table";
+import { Input } from "@/theme/components/ui/input";
+import { Button } from "@/theme/components/ui/button";
 // CUSTOM COMPONENTS
 import Item from "./InvoiceItem.vue";
-import Icon from "@/components/Icon.vue";
+import Icon from "@/theme/components/Icon.vue";
 // CUSTOM UTILS METHOD
-import { currency } from "@/lib/currency";
+import { currency } from "@/theme/lib/currency";
 // TYPES
 import { InvoiceItem } from "./types";
 

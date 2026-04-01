@@ -7,7 +7,7 @@ import {
   type SwitchRootProps,
   useForwardPropsEmits
 } from "radix-vue";
-import { cn } from "@/lib/utils";
+import { cn } from "@/theme/lib/utils";
 
 const props = defineProps<SwitchRootProps & { class?: HTMLAttributes["class"] }>();
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Scrollbar from "simplebar-vue";
 // SHADCN COMPONENTS
-import { Card, CardTitle } from "@/components/ui/card";
+import { Card, CardTitle } from "@/theme/components/ui/card";
 import {
   Table,
   TableRow,
@@ -9,18 +9,18 @@ import {
   TableCell,
   TableHead,
   TableHeader
-} from "@/components/ui/table";
+} from "@/theme/components/ui/table";
 import {
   Menubar,
   MenubarItem,
   MenubarMenu,
   MenubarTrigger,
   MenubarContent
-} from "@/components/ui/menubar";
+} from "@/theme/components/ui/menubar";
 // CUSTOM COMPONENT
-import Icon from "@/components/Icon.vue";
+import Icon from "@/theme/components/Icon.vue";
 // CUSTOM DATA
-import { jobList } from "@/data/dashboards/job-management";
+import { jobList } from "@/theme/data/dashboards/job-management";
 </script>
 
 <template>

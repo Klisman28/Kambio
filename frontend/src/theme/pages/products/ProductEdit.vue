@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useRoute } from "vue-router";
 // SHADCN COMPONENTS
-import { Card, CardTitle } from "@/components/ui/card";
+import { Card, CardTitle } from "@/theme/components/ui/card";
 // SECTION COMPONENTS
-import ProductForm from "@/sections/products/product-form";
-import { ProductFormSkeleton } from "@/sections/products/skeletons";
+import ProductForm from "@/theme/sections/products/product-form";
+import { ProductFormSkeleton } from "@/theme/sections/products/skeletons";
 // CUSTOM COMPOSABLE
-import { useProduct } from "@/hooks/useProduct";
+import { useProduct } from "@/theme/hooks/useProduct";
 
 const route = useRoute();
 const { isLoading, product } = useProduct(+route.params.id);

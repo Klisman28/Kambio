@@ -2,7 +2,7 @@
 import { type HTMLAttributes, computed } from "vue";
 import { AccordionHeader, AccordionTrigger, type AccordionTriggerProps } from "radix-vue";
 import { ChevronDown } from "lucide-vue-next";
-import { cn } from "@/lib/utils";
+import { cn } from "@/theme/lib/utils";
 
 const props = defineProps<AccordionTriggerProps & { class?: HTMLAttributes["class"] }>();
 

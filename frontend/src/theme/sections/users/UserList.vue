@@ -10,27 +10,27 @@ import {
   TableBody,
   TableHead,
   TableHeader
-} from "@/components/ui/table";
+} from "@/theme/components/ui/table";
 import {
   Menubar,
   MenubarItem,
   MenubarMenu,
   MenubarContent,
   MenubarTrigger
-} from "@/components/ui/menubar";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge, BadgeVariants } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+} from "@/theme/components/ui/menubar";
+import { Card } from "@/theme/components/ui/card";
+import { Button } from "@/theme/components/ui/button";
+import { Badge, BadgeVariants } from "@/theme/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/theme/components/ui/avatar";
 // CUSTOM COMPONENTS
 import { UserListSkeleton } from "./skeletons";
-import Icon from "@/components/Icon.vue";
-import TablePagination from "@/components/TablePagination.vue";
+import Icon from "@/theme/components/Icon.vue";
+import TablePagination from "@/theme/components/TablePagination.vue";
 // USER STORE
-import { useUsers } from "@/stores/users";
+import { useUsers } from "@/theme/stores/users";
 // CUSTOM UTILS METHODS
-import { dateFormat } from "@/lib/dateFormat";
-import { formatPhoneNumber } from "@/lib/libPhoneNumber";
+import { dateFormat } from "@/theme/lib/dateFormat";
+import { formatPhoneNumber } from "@/theme/lib/libPhoneNumber";
 
 const { state, deleteUser, resetFilter } = useUsers();
 const { filters, users, meta, isLoading } = toRefs(state);

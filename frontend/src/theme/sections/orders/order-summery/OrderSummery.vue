@@ -1,14 +1,14 @@
 <script setup lang="ts">
 // SHADCN COMPONENTS
-import { Card, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import { Card, CardTitle } from "@/theme/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/theme/components/ui/avatar";
+import { Table, TableBody, TableCell, TableRow } from "@/theme/components/ui/table";
 // CUSTOM COMPONENT
 import TableRowItem from "./TableRowItem.vue";
 // CUSTOM UTILS METHOD
-import { currency } from "@/lib/currency";
+import { currency } from "@/theme/lib/currency";
 // TYPES
-import { Order } from "@/types/Order";
+import { Order } from "@/theme/types/Order";
 
 defineProps<{ order: Order }>();
 </script>

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Header from "@/sections/home/Header.vue";
-import Banner from "@/sections/home/Banner.vue";
-import Contact from "@/sections/home/Contact.vue";
-import DemoTemplates from "@/sections/home/DemoTemplates.vue";
-import Features from "@/sections/home/features/Features.vue";
+import Header from "@/theme/sections/home/Header.vue";
+import Banner from "@/theme/sections/home/Banner.vue";
+import Contact from "@/theme/sections/home/Contact.vue";
+import DemoTemplates from "@/theme/sections/home/DemoTemplates.vue";
+import Features from "@/theme/sections/home/features/Features.vue";
 </script>
 
 <template>

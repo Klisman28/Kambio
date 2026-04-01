@@ -2,7 +2,7 @@
 // CUSTOM COMPONENTS
 import FeatureCard from "./FeatureCard.vue";
 // DATA LIST
-import { features } from "@/sections/home/data/featureList";
+import { features } from "@/theme/sections/home/data/featureList";
 </script>
 
 <template>

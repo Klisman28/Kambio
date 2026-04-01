@@ -4,31 +4,31 @@ export const dashboardRoutes: RouteRecordRaw[] = [
   {
     name: "learningManagement",
     path: "/learning-management",
-    component: () => import("@/pages/dashboard/LearningManagement.vue"),
+    component: () => import("@/theme/pages/dashboard/LearningManagement.vue"),
     meta: { title: "Learning Dashboard" }
   },
   {
     name: "jobManagement",
     path: "/job-management",
-    component: () => import("@/pages/dashboard/JobManagement.vue"),
+    component: () => import("@/theme/pages/dashboard/JobManagement.vue"),
     meta: { title: "Job Management" }
   },
   {
     name: "analytics",
     path: "/analytics",
-    component: () => import("@/pages/dashboard/Analytics.vue"),
+    component: () => import("@/theme/pages/dashboard/Analytics.vue"),
     meta: { title: "Analytics" }
   },
   {
     name: "sales",
     path: "/sales",
-    component: () => import("@/pages/dashboard/Sales.vue"),
+    component: () => import("@/theme/pages/dashboard/Sales.vue"),
     meta: { title: "Sales" }
   },
   {
     name: "saas",
     path: "/saas",
-    component: () => import("@/pages/dashboard/Saas.vue"),
+    component: () => import("@/theme/pages/dashboard/Saas.vue"),
     meta: { title: "Saas" }
   }
 ];

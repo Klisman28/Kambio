@@ -2,7 +2,7 @@ import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
 // TYPES
-import { Product } from "@/types/Product";
+import { Product } from "@/theme/types/Product";
 
 export function useProduct(productId: number) {
   const router = useRouter();

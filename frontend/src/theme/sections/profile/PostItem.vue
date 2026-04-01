@@ -6,15 +6,15 @@ import {
   MenubarMenu,
   MenubarTrigger,
   MenubarContent
-} from "@/components/ui/menubar";
-import { Button } from "@/components/ui/button";
-import { Card, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+} from "@/theme/components/ui/menubar";
+import { Button } from "@/theme/components/ui/button";
+import { Card, CardTitle } from "@/theme/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/theme/components/ui/avatar";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
-import AvatarGroup from "@/components/AvatarGroup.vue";
+import Icon from "@/theme/components/Icon.vue";
+import AvatarGroup from "@/theme/components/AvatarGroup.vue";
 // TYPES
-import { Post } from "@/types/Post";
+import { Post } from "@/theme/types/Post";
 
 defineProps<{ post: Post }>();
 </script>

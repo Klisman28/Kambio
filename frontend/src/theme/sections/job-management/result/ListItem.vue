@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watchEffect } from "vue";
 // SHADCN COMPONENTS
-import { Progress } from "@/components/ui/progress";
+import { Progress } from "@/theme/components/ui/progress";
 
 // ==============================================================
 interface Props {

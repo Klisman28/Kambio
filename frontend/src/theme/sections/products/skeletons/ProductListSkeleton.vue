@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TableRow, TableCell } from "@/components/ui/table";
+import { TableRow, TableCell } from "@/theme/components/ui/table";
 </script>
 
 <template>

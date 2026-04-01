@@ -9,7 +9,7 @@ import {
   TableCell,
   TableHead,
   TableHeader
-} from "@/components/ui/table";
+} from "@/theme/components/ui/table";
 // CUSTOM COMPONENTS
 import TextFieldSkeleton from "./TextFieldSkeleton.vue";
 

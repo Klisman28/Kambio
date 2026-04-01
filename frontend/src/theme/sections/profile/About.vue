@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import { Button } from "@/theme/components/ui/button";
+import { Card, CardContent, CardTitle } from "@/theme/components/ui/card";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
+import Icon from "@/theme/components/Icon.vue";
 </script>
 
 <template>

@@ -1,18 +1,18 @@
 <script setup lang="ts">
 // SHADCN COMPONENTS
-import { Button } from "@/components/ui/button";
-import { Card, CardTitle } from "@/components/ui/card";
+import { Button } from "@/theme/components/ui/button";
+import { Card, CardTitle } from "@/theme/components/ui/card";
 import {
   Menubar,
   MenubarItem,
   MenubarMenu,
   MenubarTrigger,
   MenubarContent
-} from "@/components/ui/menubar";
+} from "@/theme/components/ui/menubar";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
+import Icon from "@/theme/components/Icon.vue";
 // LIST DATA
-import { upcomingTasks } from "@/data/dashboards/learning-management";
+import { upcomingTasks } from "@/theme/data/dashboards/learning-management";
 </script>
 
 <template>

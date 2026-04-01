@@ -3,7 +3,7 @@ import { onMounted, ref } from "vue";
 import { useField } from "vee-validate";
 import axios from "axios";
 // SHADCN COMPONENT
-import { Label } from "@/components/ui/label";
+import { Label } from "@/theme/components/ui/label";
 // TYPES
 type Color = { id: number; title: string; value: string };
 

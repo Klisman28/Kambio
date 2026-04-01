@@ -2,11 +2,11 @@
 import { ref } from "vue";
 import VueApexCharts from "vue3-apexcharts";
 // CUSTOM COMPOSABLE
-import { useApexChartOptions } from "@/hooks/useApexChartOptions";
+import { useApexChartOptions } from "@/theme/hooks/useApexChartOptions";
 // SHADCN COMPONENTS
-import { Card, CardTitle } from "@/components/ui/card";
+import { Card, CardTitle } from "@/theme/components/ui/card";
 // CUSTOM DATA
-import { usersByContinent } from "@/data/dashboards/analytics";
+import { usersByContinent } from "@/theme/data/dashboards/analytics";
 
 const chartOptions = useApexChartOptions({
   colors: ["#2499EF"],

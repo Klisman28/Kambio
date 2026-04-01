@@ -1,7 +1,7 @@
 import { onMounted, ref } from "vue";
 import axios from "axios";
 // TYPES
-import { Status } from "@/types/Status";
+import { Status } from "@/theme/types/Status";
 
 export const useOrderStatuses = () => {
   const statuses = ref<Status[]>([]);

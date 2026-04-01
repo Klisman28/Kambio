@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import Footer from "@/components/Footer.vue";
-import Result from "@/sections/learning-management/result";
-import IntroCard from "@/sections/learning-management/intro";
-import StatusList from "@/sections/learning-management/status";
-import Downloads from "@/sections/learning-management/downloads";
-import UpgradeProCard from "@/sections/learning-management/upgrade-pro";
-import UpcomingTask from "@/sections/learning-management/upcoming-task";
-import CourseStatus from "@/sections/learning-management/course-status";
-import StudyTimeLastWeek from "@/sections/learning-management/study-time";
+import Footer from "@/theme/components/Footer.vue";
+import Result from "@/theme/sections/learning-management/result";
+import IntroCard from "@/theme/sections/learning-management/intro";
+import StatusList from "@/theme/sections/learning-management/status";
+import Downloads from "@/theme/sections/learning-management/downloads";
+import UpgradeProCard from "@/theme/sections/learning-management/upgrade-pro";
+import UpcomingTask from "@/theme/sections/learning-management/upcoming-task";
+import CourseStatus from "@/theme/sections/learning-management/course-status";
+import StudyTimeLastWeek from "@/theme/sections/learning-management/study-time";
 </script>
 
 <template>

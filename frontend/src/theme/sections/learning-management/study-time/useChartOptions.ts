@@ -1,5 +1,5 @@
 import { ref } from "vue";
-import { useApexChartOptions } from "@/hooks/useApexChartOptions";
+import { useApexChartOptions } from "@/theme/hooks/useApexChartOptions";
 
 export const useChartOptions = () => {
   const series = ref([

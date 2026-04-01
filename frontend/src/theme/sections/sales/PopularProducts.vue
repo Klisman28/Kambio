@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import Scrollbar from "simplebar-vue";
 // SHADCN COMPONENTS
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/theme/components/ui/badge";
+import { Card, CardContent, CardTitle } from "@/theme/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/theme/components/ui/avatar";
 import {
   Table,
   TableRow,
@@ -11,11 +11,11 @@ import {
   TableCell,
   TableHead,
   TableHeader
-} from "@/components/ui/table";
+} from "@/theme/components/ui/table";
 // CUSTOM UTILS METHOD
-import { currency } from "@/lib/currency";
+import { currency } from "@/theme/lib/currency";
 // CUSTOM DATA
-import { popularProducts } from "@/data/dashboards/sales";
+import { popularProducts } from "@/theme/data/dashboards/sales";
 </script>
 
 <template>

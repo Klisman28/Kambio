@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import VueApexCharts from "vue3-apexcharts";
 // SHADCN COMPONENTS
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/theme/components/ui/card";
 // CUSTOM COMPOSABLE
-import { useApexChartOptions } from "@/hooks/useApexChartOptions";
+import { useApexChartOptions } from "@/theme/hooks/useApexChartOptions";
 
 const chartOptions = useApexChartOptions({
   labels: ["Progress"],

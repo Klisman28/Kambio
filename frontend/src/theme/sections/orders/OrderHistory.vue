@@ -1,8 +1,8 @@
 <script setup lang="ts">
 // SHADCN COMPONENTS
-import { Card } from "@/components/ui/card";
+import { Card } from "@/theme/components/ui/card";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
+import Icon from "@/theme/components/Icon.vue";
 // CUSTOM COMPOSABLE
 import { useOrderHistories } from "./hooks/useOrderHistories";
 

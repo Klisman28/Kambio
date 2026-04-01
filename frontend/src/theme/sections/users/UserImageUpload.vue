@@ -2,8 +2,8 @@
 import { useField } from "vee-validate";
 import { FileRejectReason, useDropzone } from "vue3-dropzone";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
-import { cn } from "@/lib/utils";
+import Icon from "@/theme/components/Icon.vue";
+import { cn } from "@/theme/lib/utils";
 
 const { value, errorMessage, setValue, setErrors } = useField<any>("image");
 

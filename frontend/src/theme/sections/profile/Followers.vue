@@ -1,10 +1,10 @@
 <script setup lang="ts">
 // SHADCN COMPONENTS
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/theme/components/ui/button";
+import { Card, CardContent, CardTitle } from "@/theme/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/theme/components/ui/avatar";
 // DATA LIST
-import { followers } from "@/data/profile/followers";
+import { followers } from "@/theme/data/profile/followers";
 </script>
 
 <template>

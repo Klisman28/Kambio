@@ -8,14 +8,14 @@ import {
   TableCell,
   TableHead,
   TableHeader
-} from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+} from "@/theme/components/ui/table";
+import { Badge } from "@/theme/components/ui/badge";
+import { Card, CardTitle } from "@/theme/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/theme/components/ui/avatar";
 // CUSTOM DATA
-import { recentOrders } from "@/data/dashboards/sass";
+import { recentOrders } from "@/theme/data/dashboards/sass";
 // CUSTOM UTILS METHOD
-import { currency } from "@/lib/currency";
+import { currency } from "@/theme/lib/currency";
 </script>
 
 <template>

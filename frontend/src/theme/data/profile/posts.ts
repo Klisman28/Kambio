@@ -1,4 +1,4 @@
-import { Post } from "@/types/Post";
+import { Post } from "@/theme/types/Post";
 
 const posts: Post[] = [
   {

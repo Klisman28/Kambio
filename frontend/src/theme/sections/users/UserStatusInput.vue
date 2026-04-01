@@ -8,11 +8,11 @@ import {
   SelectValue,
   SelectTrigger,
   SelectContent
-} from "@/components/ui/select";
+} from "@/theme/components/ui/select";
 // USER STORE
-import { useUsers } from "@/stores/users";
+import { useUsers } from "@/theme/stores/users";
 // TYPES
-import { Status } from "@/types/Status";
+import { Status } from "@/theme/types/Status";
 
 const { state } = useUsers();
 const statues = ref<Status[]>([]);

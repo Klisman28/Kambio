@@ -4,25 +4,25 @@ export const invoiceRoutes: RouteRecordRaw[] = [
   {
     name: "Invoices",
     path: "/invoices",
-    component: () => import("@/pages/invoices/Invoices.vue"),
+    component: () => import("@/theme/pages/invoices/Invoices.vue"),
     meta: { title: "Invoices" }
   },
   {
     name: "InvoiceEdit",
     path: "/invoices/:id",
-    component: () => import("@/pages/invoices/InvoiceEdit.vue"),
+    component: () => import("@/theme/pages/invoices/InvoiceEdit.vue"),
     meta: { title: "Invoice Edit" }
   },
   {
     name: "InvoiceCreate",
     path: "/invoices/create",
-    component: () => import("@/pages/invoices/InvoiceCreate.vue"),
+    component: () => import("@/theme/pages/invoices/InvoiceCreate.vue"),
     meta: { title: "Create Invoice" }
   },
   {
     name: "InvoiceDetails",
     path: "/invoices/:id/details",
-    component: () => import("@/pages/invoices/InvoiceOverview.vue"),
+    component: () => import("@/theme/pages/invoices/InvoiceOverview.vue"),
     meta: { title: "Invoice Overview" }
   }
 ];

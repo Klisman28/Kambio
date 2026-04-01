@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Card, CardTitle } from "@/components/ui/card";
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import { Card, CardTitle } from "@/theme/components/ui/card";
+import { Table, TableBody, TableCell, TableRow } from "@/theme/components/ui/table";
 </script>
 
 <template>

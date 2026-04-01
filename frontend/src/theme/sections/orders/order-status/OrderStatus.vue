@@ -8,15 +8,15 @@ import {
   SelectValue,
   SelectContent,
   SelectTrigger
-} from "@/components/ui/select";
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
+} from "@/theme/components/ui/select";
+import { Card, CardContent, CardTitle } from "@/theme/components/ui/card";
 // CUSTOM COMPONENT
 import TimelineItem from "./TimelineItem.vue";
 import { OrderStatusSkeleton } from "../skeletons";
 // CUSTOM COMPOSABLE
 import { useOrderStatuses } from "../hooks/useOrderStatuses";
 // TYPES
-import { Order } from "@/types/Order";
+import { Order } from "@/theme/types/Order";
 
 const props = defineProps<{ order: Order }>();
 

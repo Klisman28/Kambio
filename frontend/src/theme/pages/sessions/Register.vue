@@ -4,13 +4,13 @@ import { useForm } from "vee-validate";
 import { push } from "notivue";
 import * as yup from "yup";
 // SHADCN COMPONENTS
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "@/theme/components/ui/button";
+import { Checkbox } from "@/theme/components/ui/checkbox";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
-import TextField from "@/components/form/TextField.vue";
+import Icon from "@/theme/components/Icon.vue";
+import TextField from "@/theme/components/form/TextField.vue";
 // AUTH COMPOSABLE
-import { useAuth } from "@/auth/useAuth";
+import { useAuth } from "@/theme/auth/useAuth";
 
 const router = useRouter();
 const { register } = useAuth();

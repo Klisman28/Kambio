@@ -2,7 +2,7 @@
 // CUSTOM COMPONENTS
 import OrderInfoCard from "./OrderInfoCard.vue";
 // TYPES
-import { Order } from "@/types/Order";
+import { Order } from "@/theme/types/Order";
 
 defineProps<{ order: Order }>();
 </script>

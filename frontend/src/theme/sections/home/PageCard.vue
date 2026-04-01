@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
 // SHADCN COMPONENTS
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/theme/components/ui/card";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
+import Icon from "@/theme/components/Icon.vue";
 
 // ===========================
 interface Props {

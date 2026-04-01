@@ -9,8 +9,8 @@ import {
   PaginationFirst,
   PaginationEllipsis,
   PaginationListItem
-} from "@/components/ui/pagination";
-import { Button } from "@/components/ui/button";
+} from "@/theme/components/ui/pagination";
+import { Button } from "@/theme/components/ui/button";
 
 // ==============================================================
 interface Props {

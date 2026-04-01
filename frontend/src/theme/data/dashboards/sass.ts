@@ -1,4 +1,4 @@
-import { currency } from "@/lib/currency";
+import { currency } from "@/theme/lib/currency";
 
 export const widgets = [
   {

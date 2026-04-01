@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import Footer from "@/components/Footer.vue";
-import Result from "@/sections/job-management/result";
-import JobList from "@/sections/job-management/job-list";
-import Analytics from "@/sections/job-management/analytics";
-import UpgradeToPro from "@/sections/job-management/upgrade-pro";
-import CandidatesByGender from "@/sections/job-management/candidates";
-import RecentJobApplication from "@/sections/job-management/recent-job";
-import ProfileOverview from "@/sections/job-management/profile-overview";
-import ApplicationReceivedTime from "@/sections/job-management/received-time";
+import Footer from "@/theme/components/Footer.vue";
+import Result from "@/theme/sections/job-management/result";
+import JobList from "@/theme/sections/job-management/job-list";
+import Analytics from "@/theme/sections/job-management/analytics";
+import UpgradeToPro from "@/theme/sections/job-management/upgrade-pro";
+import CandidatesByGender from "@/theme/sections/job-management/candidates";
+import RecentJobApplication from "@/theme/sections/job-management/recent-job";
+import ProfileOverview from "@/theme/sections/job-management/profile-overview";
+import ApplicationReceivedTime from "@/theme/sections/job-management/received-time";
 </script>
 
 <template>

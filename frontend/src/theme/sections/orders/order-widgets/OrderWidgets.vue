@@ -2,10 +2,10 @@
 // CUSTOM COMPONENTS
 import OrderWidgetCard from "./OrderWidgetCard.vue";
 // CUSTOM UTILS METHODS
-import { currency } from "@/lib/currency";
-import { dateFormat } from "@/lib/dateFormat";
+import { currency } from "@/theme/lib/currency";
+import { dateFormat } from "@/theme/lib/dateFormat";
 // TYPES
-import { Order } from "@/types/Order";
+import { Order } from "@/theme/types/Order";
 
 defineProps<{ order: Order }>();
 </script>

@@ -11,15 +11,15 @@ import {
   DialogContent,
   DialogTrigger,
   DialogDescription
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+} from "@/theme/components/ui/dialog";
+import { Button } from "@/theme/components/ui/button";
+import { Textarea } from "@/theme/components/ui/textarea";
+import { Avatar, AvatarFallback, AvatarImage } from "@/theme/components/ui/avatar";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
-import Rating from "@/components/Rating.vue";
+import Icon from "@/theme/components/Icon.vue";
+import Rating from "@/theme/components/Rating.vue";
 // TYPES
-import { Product, Review } from "@/types/Product";
+import { Product, Review } from "@/theme/types/Product";
 
 const { product } = defineProps<{ product: Product }>();
 

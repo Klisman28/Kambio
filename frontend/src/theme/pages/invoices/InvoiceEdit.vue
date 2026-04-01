@@ -3,12 +3,12 @@ import { onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import axios from "axios";
 // SHADCN COMPONENTS
-import { Card, CardTitle } from "@/components/ui/card";
+import { Card, CardTitle } from "@/theme/components/ui/card";
 // SECTION COMPONENTS
-import { InvoiceForm } from "@/sections/invoices/invoice-form";
-import { InvoiceFormSkeleton } from "@/sections/invoices/skeletons";
+import { InvoiceForm } from "@/theme/sections/invoices/invoice-form";
+import { InvoiceFormSkeleton } from "@/theme/sections/invoices/skeletons";
 // TYPES
-import { Invoice } from "@/types/Invoice";
+import { Invoice } from "@/theme/types/Invoice";
 
 const route = useRoute();
 const router = useRouter();

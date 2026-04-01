@@ -1,9 +1,9 @@
 <script setup lang="ts">
 // SHADCN COMPONENTS
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/theme/components/ui/button";
+import { Card, CardContent } from "@/theme/components/ui/card";
 // TYPES
-import { Invoice } from "@/types/Invoice";
+import { Invoice } from "@/theme/types/Invoice";
 
 const { invoice } = defineProps<{ invoice: Invoice }>();
 </script>

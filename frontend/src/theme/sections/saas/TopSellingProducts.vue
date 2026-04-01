@@ -1,11 +1,11 @@
 <script setup lang="ts">
 // SHADCN COMPONENTS
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Card, CardContent, CardTitle } from "@/theme/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/theme/components/ui/avatar";
 // CUSTOM COMPONENTS
-import Rating from "@/components/Rating.vue";
+import Rating from "@/theme/components/Rating.vue";
 // CUSTOM DATA
-import { topSellingProducts } from "@/data/dashboards/sass";
+import { topSellingProducts } from "@/theme/data/dashboards/sass";
 </script>
 
 <template>

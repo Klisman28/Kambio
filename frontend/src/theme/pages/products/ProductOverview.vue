@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { useRoute } from "vue-router";
 // SHADCN COMPONENTS
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/theme/components/ui/button";
+import { Card, CardContent } from "@/theme/components/ui/card";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
+import Icon from "@/theme/components/Icon.vue";
 // SECTION COMPONENTS
-import ProductReview from "@/sections/products/ProductReview.vue";
-import ProductDetails from "@/sections/products/ProductDetails.vue";
+import ProductReview from "@/theme/sections/products/ProductReview.vue";
+import ProductDetails from "@/theme/sections/products/ProductDetails.vue";
 // CUSTOM COMPOSABLE
-import { useProduct } from "@/hooks/useProduct";
+import { useProduct } from "@/theme/hooks/useProduct";
 // CUSTOM UTILS METHODS
-import { cn } from "@/lib/utils";
-import { ProductOverviewSkeleton } from "@/sections/products/skeletons";
+import { cn } from "@/theme/lib/utils";
+import { ProductOverviewSkeleton } from "@/theme/sections/products/skeletons";
 
 const route = useRoute();
 const { isLoading, product } = useProduct(+route.params.id);

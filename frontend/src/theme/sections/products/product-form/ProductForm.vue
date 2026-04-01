@@ -3,22 +3,22 @@ import { useRouter } from "vue-router";
 import { useFieldArray, useForm } from "vee-validate";
 import * as yup from "yup";
 // SHADCN COMPONENTS
-import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
-import { Switch } from "@/components/ui/switch";
+import { Label } from "@/theme/components/ui/label";
+import { Button } from "@/theme/components/ui/button";
+import { Switch } from "@/theme/components/ui/switch";
 // CUSTOM COMPONENTS
 import Sizes from "./Sizes.vue";
 import Colors from "./Colors.vue";
 import Categories from "./Categories.vue";
 import ProductImages from "./ProductImages.vue";
 import ProductFeatureItem from "./ProductFeatureItem.vue";
-import Icon from "@/components/Icon.vue";
-import TextField from "@/components/form/TextField.vue";
-import TextAreaField from "@/components/form/TextAreaField.vue";
+import Icon from "@/theme/components/Icon.vue";
+import TextField from "@/theme/components/form/TextField.vue";
+import TextAreaField from "@/theme/components/form/TextAreaField.vue";
 // STORE
-import { useProducts } from "@/stores/products";
+import { useProducts } from "@/theme/stores/products";
 // TYPE
-import { Product } from "@/types/Product";
+import { Product } from "@/theme/types/Product";
 
 const { product } = defineProps<{ product?: Product }>();
 const { createNewProduct, updateProduct } = useProducts();

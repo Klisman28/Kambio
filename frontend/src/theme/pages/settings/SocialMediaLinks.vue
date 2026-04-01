@@ -1,8 +1,8 @@
 <script setup lang="ts">
 // SHADCN COMPONENTS
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardTitle } from "@/theme/components/ui/card";
 // CUSTOM COMPONENTS
-import SocialLinkItem from "@/sections/settings/SocialLinkItem.vue";
+import SocialLinkItem from "@/theme/sections/settings/SocialLinkItem.vue";
 </script>
 
 <template>

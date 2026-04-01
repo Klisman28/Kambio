@@ -3,7 +3,7 @@ import Scrollbar from "simplebar-vue";
 // CUSTOM COMPONENT
 import NavItem from "./NavItem.vue";
 // MENU LIST
-import { navigation } from "@/data/navigation";
+import { navigation } from "@/theme/data/navigation";
 </script>
 
 <template>

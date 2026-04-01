@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
 // SHADCN COMPONENTS
-import { Button } from "@/components/ui/button";
+import { Button } from "@/theme/components/ui/button";
 </script>
 
 <template>

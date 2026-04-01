@@ -3,18 +3,18 @@ import { onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import axios from "axios";
 // CUSTOM COMPONENTS
-import OrderInfo from "@/sections/orders/order-info";
-import OrderStatus from "@/sections/orders/order-status";
-import OrderSummery from "@/sections/orders/order-summery";
-import OrderWidgets from "@/sections/orders/order-widgets";
+import OrderInfo from "@/theme/sections/orders/order-info";
+import OrderStatus from "@/theme/sections/orders/order-status";
+import OrderSummery from "@/theme/sections/orders/order-summery";
+import OrderWidgets from "@/theme/sections/orders/order-widgets";
 import {
   OrderInfoSkeleton,
   OrderStatusSkeleton,
   OrderWidgetSkeleton,
   OrderSummerySkeleton
-} from "@/sections/orders/skeletons";
+} from "@/theme/sections/orders/skeletons";
 // TYPES
-import { Order } from "@/types/Order";
+import { Order } from "@/theme/types/Order";
 
 const route = useRoute();
 const router = useRouter();

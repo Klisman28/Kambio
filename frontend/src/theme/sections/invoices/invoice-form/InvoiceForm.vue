@@ -3,17 +3,17 @@ import { useRouter } from "vue-router";
 import { useForm } from "vee-validate";
 import * as yup from "yup";
 // SHADCN COMPONENTS
-import { Button } from "@/components/ui/button";
-import { SelectItem, SelectContent } from "@/components/ui/select";
+import { Button } from "@/theme/components/ui/button";
+import { SelectItem, SelectContent } from "@/theme/components/ui/select";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
+import Icon from "@/theme/components/Icon.vue";
 import InvoiceItems from "./InvoiceItems.vue";
-import TextField from "@/components/form/TextField.vue";
-import SelectField from "@/components/form/SelectField.vue";
+import TextField from "@/theme/components/form/TextField.vue";
+import SelectField from "@/theme/components/form/SelectField.vue";
 // TYPE
-import { Invoice } from "@/types/Invoice";
+import { Invoice } from "@/theme/types/Invoice";
 // STORE
-import { useInvoices } from "@/stores/invoices";
+import { useInvoices } from "@/theme/stores/invoices";
 
 const { invoice } = defineProps<{ invoice?: Invoice }>();
 

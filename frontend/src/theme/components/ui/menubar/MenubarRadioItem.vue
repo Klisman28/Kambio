@@ -8,7 +8,7 @@ import {
   useForwardPropsEmits
 } from "radix-vue";
 import { Circle } from "lucide-vue-next";
-import { cn } from "@/lib/utils";
+import { cn } from "@/theme/lib/utils";
 
 const props = defineProps<MenubarRadioItemProps & { class?: HTMLAttributes["class"] }>();
 const emits = defineEmits<MenubarRadioItemEmits>();

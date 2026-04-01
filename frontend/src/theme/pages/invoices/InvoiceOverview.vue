@@ -3,11 +3,11 @@ import { onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import axios from "axios";
 // CUSTOM COMPONENTS
-import InvoicePreview from "@/sections/invoices/InvoicePreview.vue";
-import InvoicePayment from "@/sections/invoices/InvoicePayment.vue";
-import { InvoiceOverviewSkeleton } from "@/sections/invoices/skeletons";
+import InvoicePreview from "@/theme/sections/invoices/InvoicePreview.vue";
+import InvoicePayment from "@/theme/sections/invoices/InvoicePayment.vue";
+import { InvoiceOverviewSkeleton } from "@/theme/sections/invoices/skeletons";
 // TYPES
-import { Invoice } from "@/types/Invoice";
+import { Invoice } from "@/theme/types/Invoice";
 
 const route = useRoute();
 const router = useRouter();

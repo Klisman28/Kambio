@@ -7,11 +7,11 @@ import {
   SheetHeader,
   SheetContent,
   SheetDescription
-} from "@/components/ui/sheet";
+} from "@/theme/components/ui/sheet";
 // CUSTOM COMPONENTS
 import SidebarNavigation from "./sidebar/SidebarNavigation.vue";
 // CUSTOM COMPOSABLE
-import { useSidebar } from "@/stores/sidebar";
+import { useSidebar } from "@/theme/stores/sidebar";
 
 const sidebarStore = useSidebar();
 </script>

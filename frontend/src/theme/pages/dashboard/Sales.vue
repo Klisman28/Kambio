@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import Footer from "@/components/Footer.vue";
-import Widgets from "@/sections/sales/Widgets.vue";
-import RecentOrders from "@/sections/sales/RecentOrders.vue";
-import ProjectStatus from "@/sections/sales/ProjectStatus.vue";
-import EarningsReport from "@/sections/sales/EarningsReport.vue";
-import PopularProducts from "@/sections/sales/PopularProducts.vue";
-import LeadsVsCustomers from "@/sections/sales/LeadsVsCustomers.vue";
+import Footer from "@/theme/components/Footer.vue";
+import Widgets from "@/theme/sections/sales/Widgets.vue";
+import RecentOrders from "@/theme/sections/sales/RecentOrders.vue";
+import ProjectStatus from "@/theme/sections/sales/ProjectStatus.vue";
+import EarningsReport from "@/theme/sections/sales/EarningsReport.vue";
+import PopularProducts from "@/theme/sections/sales/PopularProducts.vue";
+import LeadsVsCustomers from "@/theme/sections/sales/LeadsVsCustomers.vue";
 </script>
 
 <template>

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 // SHADCN COMPONENTS
-import { Badge } from "@/components/ui/badge";
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/theme/components/ui/badge";
+import { Card, CardHeader, CardTitle } from "@/theme/components/ui/card";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
+import Icon from "@/theme/components/Icon.vue";
 
 // ==============================================================
 interface Props {

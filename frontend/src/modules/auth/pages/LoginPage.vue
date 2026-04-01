@@ -1,48 +1,46 @@
 <template>
-  <!--
-    LoginPage.vue — Kambio
-    Este componente usa el layout y estilos del tema comprado.
-    Cuando el tema esté disponible en src/theme/, reemplaza el
-    wrapper por el componente de layout correspondiente del tema.
-  -->
-  <div class="login-wrapper">
-    <div class="login-card">
-      <div class="login-header">
-        <h1>Kambio</h1>
-        <p>Sistema financiero MXN · GTQ</p>
+  <div class="w-full max-w-md mx-auto">
+    <h3 class="mb-2 text-2xl font-bold text-foreground">Sign In</h3>
+    <div class="flex gap-1 mt-1 mb-8 text-sm font-medium">
+      <p class="text-muted">Acceso seguro al sistema Kambio.</p>
+    </div>
+
+    <form @submit.prevent="handleSubmit" class="space-y-5">
+      <div class="flex flex-col gap-1.5">
+        <label for="email" class="text-sm font-medium text-muted">Correo electrónico</label>
+        <input
+          id="email"
+          v-model="form.email"
+          type="email"
+          placeholder="admin@kambio.dev"
+          autocomplete="username"
+          required
+          class="w-full h-10 px-3 py-2 text-sm bg-transparent border rounded-md border-border text-foreground ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-colors"
+        />
       </div>
 
-      <form @submit.prevent="handleSubmit" class="login-form">
-        <div class="field">
-          <label for="email">Correo electrónico</label>
-          <input
-            id="email"
-            v-model="form.email"
-            type="email"
-            placeholder="admin@kambio.dev"
-            autocomplete="username"
-            required
-          />
-        </div>
+      <div class="flex flex-col gap-1.5">
+        <label for="password" class="text-sm font-medium text-muted">Contraseña</label>
+        <input
+          id="password"
+          v-model="form.password"
+          type="password"
+          autocomplete="current-password"
+          required
+          class="w-full h-10 px-3 py-2 text-sm bg-transparent border rounded-md border-border text-foreground ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-colors"
+        />
+      </div>
 
-        <div class="field">
-          <label for="password">Contraseña</label>
-          <input
-            id="password"
-            v-model="form.password"
-            type="password"
-            autocomplete="current-password"
-            required
-          />
-        </div>
+      <p v-if="error" class="text-sm font-medium text-error">{{ error }}</p>
 
-        <p v-if="error" class="error-message">{{ error }}</p>
-
-        <button type="submit" :disabled="loading" class="btn-login">
-          {{ loading ? 'Ingresando…' : 'Ingresar' }}
-        </button>
-      </form>
-    </div>
+      <button
+        type="submit"
+        :disabled="loading"
+        class="inline-flex items-center justify-center w-full h-10 px-4 py-2 mt-4 text-sm font-medium text-white transition-colors rounded-md bg-primary hover:bg-primary-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+      >
+        {{ loading ? 'Ingresando…' : 'Ingresar' }}
+      </button>
+    </form>
   </div>
 </template>
 
@@ -68,85 +66,3 @@ async function handleSubmit() {
   }
 }
 </script>
-
-<style scoped>
-/* Estilos mínimos temporales — serán reemplazados al integrar el tema comprado */
-.login-wrapper {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #0f172a;
-}
-.login-card {
-  background: #1e293b;
-  border-radius: 12px;
-  padding: 2.5rem;
-  width: 100%;
-  max-width: 400px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-}
-.login-header {
-  text-align: center;
-  margin-bottom: 2rem;
-  color: #f8fafc;
-}
-.login-header h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-}
-.login-header p {
-  color: #94a3b8;
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
-}
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  margin-bottom: 1.25rem;
-}
-.field label {
-  color: #cbd5e1;
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-.field input {
-  padding: 0.6rem 0.875rem;
-  border-radius: 8px;
-  border: 1px solid #334155;
-  background: #0f172a;
-  color: #f8fafc;
-  font-size: 0.95rem;
-  outline: none;
-  transition: border-color 0.2s;
-}
-.field input:focus {
-  border-color: #6366f1;
-}
-.btn-login {
-  width: 100%;
-  padding: 0.7rem;
-  border-radius: 8px;
-  border: none;
-  background: #6366f1;
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.btn-login:hover:not(:disabled) {
-  background: #4f46e5;
-}
-.btn-login:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-.error-message {
-  color: #f87171;
-  font-size: 0.875rem;
-  margin-bottom: 0.75rem;
-}
-</style>

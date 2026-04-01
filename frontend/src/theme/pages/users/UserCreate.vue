@@ -1,8 +1,8 @@
 <script setup lang="ts">
 // SHADCN COMPONENTS
-import { Card, CardTitle } from "@/components/ui/card";
+import { Card, CardTitle } from "@/theme/components/ui/card";
 // CUSTOM COMPONENT
-import UserForm from "@/sections/users/UserForm.vue";
+import UserForm from "@/theme/sections/users/UserForm.vue";
 </script>
 
 <template>

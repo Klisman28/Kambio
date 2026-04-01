@@ -2,11 +2,11 @@
 import { useRoute } from "vue-router";
 import { RouterLink } from "vue-router";
 // SHADCN COMPONENTS
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/theme/components/ui/input";
+import { Button } from "@/theme/components/ui/button";
+import { Card, CardContent } from "@/theme/components/ui/card";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
+import Icon from "@/theme/components/Icon.vue";
 // DATA LIST
 const supportNavigation = [
   { label: "Overview", route: "/support" },

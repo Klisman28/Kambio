@@ -1,12 +1,12 @@
 <script setup lang="ts">
 // SHADCN COMPONENTS
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/theme/components/ui/button";
+import { Card, CardContent, CardTitle } from "@/theme/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/theme/components/ui/avatar";
 // CUSTOM UTILS METHOD
-import { currency } from "@/lib/currency";
+import { currency } from "@/theme/lib/currency";
 // CUSTOM DATA
-import { recentOrders } from "@/data/dashboards/sales";
+import { recentOrders } from "@/theme/data/dashboards/sales";
 </script>
 
 <template>

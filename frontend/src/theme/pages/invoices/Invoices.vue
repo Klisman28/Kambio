@@ -6,14 +6,14 @@ import {
   SelectValue,
   SelectContent,
   SelectTrigger
-} from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+} from "@/theme/components/ui/select";
+import { Input } from "@/theme/components/ui/input";
+import { Button } from "@/theme/components/ui/button";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
-import InvoiceList from "@/sections/invoices/InvoiceList.vue";
+import Icon from "@/theme/components/Icon.vue";
+import InvoiceList from "@/theme/sections/invoices/InvoiceList.vue";
 // STORE
-import { useInvoices } from "@/stores/invoices";
+import { useInvoices } from "@/theme/stores/invoices";
 
 const { state } = useInvoices();
 </script>

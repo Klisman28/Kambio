@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useWindowScroll, useDark, useToggle, useTextDirection } from "@vueuse/core";
 // CUSTOM STORE
-import { useSidebar } from "@/stores/sidebar";
+import { useSidebar } from "@/theme/stores/sidebar";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
+import Icon from "@/theme/components/Icon.vue";
 import SearchPopover from "./popovers/SearchPopover.vue";
 import ProfilePopover from "./popovers/ProfilePopover.vue";
 import NotificationPopover from "./popovers/NotificationPopover.vue";

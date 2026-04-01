@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import VueApexCharts from "vue3-apexcharts";
 // SHADCN COMPONENTS
-import { Card, CardTitle } from "@/components/ui/card";
+import { Card, CardTitle } from "@/theme/components/ui/card";
 // CUSTOM COMPOSABLE
 import { useChartOptions } from "./useChartOptions";
 

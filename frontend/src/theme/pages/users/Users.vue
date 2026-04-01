@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { toRefs } from "vue";
 // SHADCN COMPONENTS
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Input } from "@/theme/components/ui/input";
+import { Button } from "@/theme/components/ui/button";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
+import Icon from "@/theme/components/Icon.vue";
 // SECTION COMPONENTS
-import UserList from "@/sections/users/UserList.vue";
-import UserStatusInput from "@/sections/users/UserStatusInput.vue";
+import UserList from "@/theme/sections/users/UserList.vue";
+import UserStatusInput from "@/theme/sections/users/UserStatusInput.vue";
 // USER STORE
-import { useUsers } from "@/stores/users";
+import { useUsers } from "@/theme/stores/users";
 
 const { state } = useUsers();
 const { filters } = toRefs(state);

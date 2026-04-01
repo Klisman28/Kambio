@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import Footer from "@/components/Footer.vue";
-import Widgets from "@/sections/saas/Widgets.vue";
-import Analytics from "@/sections/saas/Analytics.vue";
-import TotalSpend from "@/sections/saas/TotalSpend.vue";
-import RecentOrders from "@/sections/saas/RecentOrders.vue";
-import TopSellingProducts from "@/sections/saas/TopSellingProducts.vue";
+import Footer from "@/theme/components/Footer.vue";
+import Widgets from "@/theme/sections/saas/Widgets.vue";
+import Analytics from "@/theme/sections/saas/Analytics.vue";
+import TotalSpend from "@/theme/sections/saas/TotalSpend.vue";
+import RecentOrders from "@/theme/sections/saas/RecentOrders.vue";
+import TopSellingProducts from "@/theme/sections/saas/TopSellingProducts.vue";
 </script>
 
 <template>

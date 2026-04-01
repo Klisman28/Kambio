@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Button } from "@/components/ui/button";
-import Icon from "@/components/Icon.vue";
+import { Button } from "@/theme/components/ui/button";
+import Icon from "@/theme/components/Icon.vue";
 
 defineProps<{ icon: string; name: string; isConnected?: boolean; url?: string }>();
 </script>

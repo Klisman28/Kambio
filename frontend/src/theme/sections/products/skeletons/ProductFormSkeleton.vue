@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // SAhDCN COMPONENTS
-import { Label } from "@/components/ui/label";
+import { Label } from "@/theme/components/ui/label";
 // CUSTOM COMPONENTS
 import TextFieldSkeleton from "./TextFieldSkeleton.vue";
 </script>

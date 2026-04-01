@@ -1,8 +1,8 @@
 <script setup lang="ts">
 // SHADCN COMPONENT
-import { Card, CardTitle } from "@/components/ui/card";
+import { Card, CardTitle } from "@/theme/components/ui/card";
 // CUSTOM COMPONENTS
-import ProductForm from "@/sections/products/product-form";
+import ProductForm from "@/theme/sections/products/product-form";
 </script>
 
 <template>

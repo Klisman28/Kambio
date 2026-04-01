@@ -10,7 +10,7 @@ import "notivue/animations.css";
 import "nprogress/nprogress.css";
 
 // MAIN CSS
-import "@/assets/index.css";
+import "@/theme/assets/index.css";
 
 // FAKE API
 import "./__mock__";

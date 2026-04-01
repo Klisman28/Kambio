@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import VueApexCharts from "vue3-apexcharts";
 // SHADCN COMPONENT
-import { Card } from "@/components/ui/card";
+import { Card } from "@/theme/components/ui/card";
 // CUSTOM COMPONENT
-import Icon from "@/components/Icon.vue";
+import Icon from "@/theme/components/Icon.vue";
 // CUSTOM COMPOSABLE
 import { chartOptions } from "./useChartOptions";
 // CUSTOM DATA
-import { analytics } from "@/data/dashboards/job-management";
+import { analytics } from "@/theme/data/dashboards/job-management";
 </script>
 
 <template>

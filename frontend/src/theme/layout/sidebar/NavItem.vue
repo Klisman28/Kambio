@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useRoute, RouterLink } from "vue-router";
 // CUSTOM COMPONENT
-import Icon from "@/components/Icon.vue";
+import Icon from "@/theme/components/Icon.vue";
 import NavAccordion from "./NavAccordion.vue";
 // CUSTOM STORE
-import { useSidebar } from "@/stores/sidebar";
+import { useSidebar } from "@/theme/stores/sidebar";
 // TYPE
 import { NavItem } from "./type";
 

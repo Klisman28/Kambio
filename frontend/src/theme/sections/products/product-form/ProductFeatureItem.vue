@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { useFieldArray } from "vee-validate";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
-import TextField from "@/components/form/TextField.vue";
+import Icon from "@/theme/components/Icon.vue";
+import TextField from "@/theme/components/form/TextField.vue";
 
 defineProps<{ id: number }>();
 const { remove } = useFieldArray("features");

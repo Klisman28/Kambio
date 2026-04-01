@@ -6,13 +6,13 @@ import {
   MenubarMenu,
   MenubarTrigger,
   MenubarContent
-} from "@/components/ui/menubar";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { Card, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+} from "@/theme/components/ui/menubar";
+import { Button } from "@/theme/components/ui/button";
+import { Textarea } from "@/theme/components/ui/textarea";
+import { Card, CardTitle } from "@/theme/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/theme/components/ui/avatar";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
+import Icon from "@/theme/components/Icon.vue";
 </script>
 
 <template>

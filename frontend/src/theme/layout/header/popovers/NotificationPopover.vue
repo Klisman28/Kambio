@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { Ban, BellRing } from "lucide-vue-next";
 // SHADCDN COMPONENTS
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Avatar, AvatarImage, AvatarFallback } from "@/theme/components/ui/avatar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/theme/components/ui/popover";
 // DATA LIST
-import { notifications } from "@/data/notifications";
+import { notifications } from "@/theme/data/notifications";
 </script>
 
 <template>

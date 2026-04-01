@@ -1,12 +1,12 @@
 <script setup lang="ts">
 // SHADCN COMPONENTS
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import { SelectItem } from "@/components/ui/select";
+import { Button } from "@/theme/components/ui/button";
+import { Card, CardContent, CardTitle } from "@/theme/components/ui/card";
+import { SelectItem } from "@/theme/components/ui/select";
 // CUSTOM COMPONENTS
-import TextField from "@/components/form/TextField.vue";
-import SelectField from "@/components/form/SelectField.vue";
-import TextAreaField from "@/components/form/TextAreaField.vue";
+import TextField from "@/theme/components/form/TextField.vue";
+import SelectField from "@/theme/components/form/SelectField.vue";
+import TextAreaField from "@/theme/components/form/TextAreaField.vue";
 </script>
 
 <template>

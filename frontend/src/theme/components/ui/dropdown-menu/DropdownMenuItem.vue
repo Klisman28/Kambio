@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { type HTMLAttributes, computed } from "vue";
 import { DropdownMenuItem, type DropdownMenuItemProps, useForwardProps } from "radix-vue";
-import { cn } from "@/lib/utils";
+import { cn } from "@/theme/lib/utils";
 import { type OptionVariants, optionVariants } from ".";
 
 interface Props extends DropdownMenuItemProps {

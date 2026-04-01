@@ -4,25 +4,25 @@ export const sessionRoutes: RouteRecordRaw[] = [
   {
     path: "/login",
     name: "Login",
-    component: () => import("@/pages/sessions/Login.vue"),
+    component: () => import("@/theme/pages/sessions/Login.vue"),
     meta: { title: "Login" }
   },
   {
     path: "/register",
     name: "Register",
-    component: () => import("@/pages/sessions/Register.vue"),
+    component: () => import("@/theme/pages/sessions/Register.vue"),
     meta: { title: "Register" }
   },
   {
     path: "/forget-password",
     name: "ForgetPassword",
-    component: () => import("@/pages/sessions/ForgetPassword.vue"),
+    component: () => import("@/theme/pages/sessions/ForgetPassword.vue"),
     meta: { title: "Forget Password" }
   },
   {
     path: "/verification",
     name: "Verification",
-    component: () => import("@/pages/sessions/Verification.vue"),
+    component: () => import("@/theme/pages/sessions/Verification.vue"),
     meta: { title: "Verification" }
   }
 ];

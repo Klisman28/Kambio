@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import OrderList from "@/sections/orders/OrderList.vue";
-import OrderFilters from "@/sections/orders/OrderFilters.vue";
-import OrderHistory from "@/sections/orders/OrderHistory.vue";
-import OrderAnalytics from "@/sections/orders/OrderAnalytics.vue";
+import OrderList from "@/theme/sections/orders/OrderList.vue";
+import OrderFilters from "@/theme/sections/orders/OrderFilters.vue";
+import OrderHistory from "@/theme/sections/orders/OrderHistory.vue";
+import OrderAnalytics from "@/theme/sections/orders/OrderAnalytics.vue";
 </script>
 
 <template>

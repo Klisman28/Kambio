@@ -1,11 +1,11 @@
 <script setup lang="ts">
 // SHADCN COMPONENTS
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/theme/components/ui/badge";
+import { Card, CardContent } from "@/theme/components/ui/card";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
+import Icon from "@/theme/components/Icon.vue";
 // CUSTOM DATA
-import { widgets } from "@/data/dashboards/analytics";
+import { widgets } from "@/theme/data/dashboards/analytics";
 </script>
 
 <template>

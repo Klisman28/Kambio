@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from "vue-router";
 // SHADCDN COMPONENTS
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Avatar, AvatarFallback, AvatarImage } from "@/theme/components/ui/avatar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/theme/components/ui/popover";
 // CUSTOM COMPONENT
-import Icon from "@/components/Icon.vue";
+import Icon from "@/theme/components/Icon.vue";
 // AUTH COMPOSABLE
-import { useAuth } from "@/auth/useAuth";
+import { useAuth } from "@/theme/auth/useAuth";
 
 const route = useRoute();
 const router = useRouter();

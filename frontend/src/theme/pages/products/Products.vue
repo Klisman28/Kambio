@@ -1,20 +1,20 @@
 <script setup lang="ts">
 // SHADCN COMPONENTS
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Input } from "@/theme/components/ui/input";
+import { Button } from "@/theme/components/ui/button";
 import {
   Select,
   SelectItem,
   SelectValue,
   SelectContent,
   SelectTrigger
-} from "@/components/ui/select";
+} from "@/theme/components/ui/select";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
+import Icon from "@/theme/components/Icon.vue";
 // SECTION COMPONENTS
-import ProductList from "@/sections/products/ProductList.vue";
+import ProductList from "@/theme/sections/products/ProductList.vue";
 // STORE
-import { useProducts } from "@/stores/products";
+import { useProducts } from "@/theme/stores/products";
 
 const { state } = useProducts();
 </script>

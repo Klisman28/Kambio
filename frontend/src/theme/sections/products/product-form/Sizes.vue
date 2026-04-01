@@ -3,8 +3,8 @@ import { onMounted, ref } from "vue";
 import { useField } from "vee-validate";
 import axios from "axios";
 // SHADCN COMPONENTS
-import { Label } from "@/components/ui/label";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { Label } from "@/theme/components/ui/label";
+import { ToggleGroup, ToggleGroupItem } from "@/theme/components/ui/toggle-group";
 // TYPES
 type Size = { id: number; title: string; value: string };
 

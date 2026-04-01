@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent } from "@/components/ui/card";
+import { Label } from "@/theme/components/ui/label";
+import { Button } from "@/theme/components/ui/button";
+import { Textarea } from "@/theme/components/ui/textarea";
+import { Card, CardContent } from "@/theme/components/ui/card";
 // CUSTOM COMPONENT
-import TextField from "@/components/form/TextField.vue";
-import ProfileWidget from "@/sections/settings/ProfileWidget.vue";
+import TextField from "@/theme/components/form/TextField.vue";
+import ProfileWidget from "@/theme/sections/settings/ProfileWidget.vue";
 </script>
 
 <template>

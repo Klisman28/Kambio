@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Button } from "@/components/ui/button";
+import { Button } from "@/theme/components/ui/button";
 import PostItem from "./PostItem.vue";
 // DATA LIST
-import posts from "@/data/profile/posts";
+import posts from "@/theme/data/profile/posts";
 </script>
 
 <template>

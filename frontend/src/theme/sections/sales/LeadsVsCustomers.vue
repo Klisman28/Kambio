@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import VueApexCharts from "vue3-apexcharts";
 // CUSTOM COMPOSABLE
-import { useApexChartOptions } from "@/hooks/useApexChartOptions";
+import { useApexChartOptions } from "@/theme/hooks/useApexChartOptions";
 // SHADCN COMPONENTS
 import {
   Select,
@@ -11,8 +11,8 @@ import {
   SelectValue,
   SelectContent,
   SelectTrigger
-} from "@/components/ui/select";
-import { Card } from "@/components/ui/card";
+} from "@/theme/components/ui/select";
+import { Card } from "@/theme/components/ui/card";
 
 const selected = ref("0");
 const series = ref([

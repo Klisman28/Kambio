@@ -1,10 +1,10 @@
 <script setup lang="ts">
 // SHADCN COMPONENTS
-import { Card, CardTitle } from "@/components/ui/card";
+import { Card, CardTitle } from "@/theme/components/ui/card";
 // CUSTOM COMPONENT
 import ResultItem from "./ResultItem.vue";
 // LIST DATA
-import { result } from "@/data/dashboards/learning-management";
+import { result } from "@/theme/data/dashboards/learning-management";
 </script>
 
 <template>

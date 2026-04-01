@@ -5,8 +5,8 @@ import {
   MenubarMenu,
   MenubarContent,
   MenubarTrigger
-} from "@/components/ui/menubar";
-import Icon from "@/components/Icon.vue";
+} from "@/theme/components/ui/menubar";
+import Icon from "@/theme/components/Icon.vue";
 
 defineProps<{ title: string; value: number; description: string }>();
 </script>

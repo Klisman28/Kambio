@@ -1,12 +1,12 @@
 <script setup lang="ts">
 // SHADCN COMPONENTS
-import { Button } from "@/components/ui/button";
-import { Alert, AlertTitle } from "@/components/ui/alert";
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import { Button } from "@/theme/components/ui/button";
+import { Alert, AlertTitle } from "@/theme/components/ui/alert";
+import { Card, CardContent, CardTitle } from "@/theme/components/ui/card";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
-import TextField from "@/components/form/TextField.vue";
-import PlanItem from "@/sections/settings/PlanItem.vue";
+import Icon from "@/theme/components/Icon.vue";
+import TextField from "@/theme/components/form/TextField.vue";
+import PlanItem from "@/theme/sections/settings/PlanItem.vue";
 </script>
 
 <template>

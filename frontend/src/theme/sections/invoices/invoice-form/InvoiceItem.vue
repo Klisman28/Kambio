@@ -2,11 +2,11 @@
 import { watch } from "vue";
 import { useFieldArray } from "vee-validate";
 // SHADCN COMPONENTS
-import { Button } from "@/components/ui/button";
-import { TableCell, TableRow } from "@/components/ui/table";
+import { Button } from "@/theme/components/ui/button";
+import { TableCell, TableRow } from "@/theme/components/ui/table";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
-import TextField from "@/components/form/TextField.vue";
+import Icon from "@/theme/components/Icon.vue";
+import TextField from "@/theme/components/form/TextField.vue";
 // TYPES
 import { InvoiceItem } from "./types";
 

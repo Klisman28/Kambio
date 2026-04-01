@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Button } from "@/components/ui/button";
+import { Button } from "@/theme/components/ui/button";
 // CUSTOM COMPONENTS
-import TextField from "@/components/form/TextField.vue";
+import TextField from "@/theme/components/form/TextField.vue";
 </script>
 
 <template>

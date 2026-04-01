@@ -1,9 +1,9 @@
 <script setup lang="ts">
 // SHADCN COMPONENTS
-import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Card, CardTitle } from "@/components/ui/card";
+import { Label } from "@/theme/components/ui/label";
+import { Button } from "@/theme/components/ui/button";
+import { Checkbox } from "@/theme/components/ui/checkbox";
+import { Card, CardTitle } from "@/theme/components/ui/card";
 </script>
 
 <template>

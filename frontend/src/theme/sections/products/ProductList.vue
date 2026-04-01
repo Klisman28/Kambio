@@ -10,26 +10,26 @@ import {
   TableBody,
   TableHead,
   TableHeader
-} from "@/components/ui/table";
+} from "@/theme/components/ui/table";
 import {
   Menubar,
   MenubarItem,
   MenubarMenu,
   MenubarContent,
   MenubarTrigger
-} from "@/components/ui/menubar";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+} from "@/theme/components/ui/menubar";
+import { Card } from "@/theme/components/ui/card";
+import { Badge } from "@/theme/components/ui/badge";
+import { Button } from "@/theme/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/theme/components/ui/avatar";
 // CUSTOM COMPONENTS
 import { ProductListSkeleton } from "./skeletons";
-import Icon from "@/components/Icon.vue";
-import TablePagination from "@/components/TablePagination.vue";
+import Icon from "@/theme/components/Icon.vue";
+import TablePagination from "@/theme/components/TablePagination.vue";
 // USER STORE
-import { useProducts } from "@/stores/products";
+import { useProducts } from "@/theme/stores/products";
 // CUSTOM UTILS METHOD
-import { currency } from "@/lib/currency";
+import { currency } from "@/theme/lib/currency";
 
 const { state, deleteProduct, resetFilter } = useProducts();
 const { filters, meta, products, isLoading } = toRefs(state);

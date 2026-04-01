@@ -8,13 +8,13 @@ import {
   TableCell,
   TableHead,
   TableHeader
-} from "@/components/ui/table";
-import { Card, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+} from "@/theme/components/ui/table";
+import { Card, CardTitle } from "@/theme/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/theme/components/ui/avatar";
 // CUSTOM UTILS METHOD
-import { currency } from "@/lib/currency";
+import { currency } from "@/theme/lib/currency";
 // DATA LIST
-import { courses } from "@/data/dashboards/learning-management";
+import { courses } from "@/theme/data/dashboards/learning-management";
 </script>
 
 <template>

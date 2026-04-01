@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import NProgress from "nprogress";
 // AUTH COMPOSABLE
-import { useAuth } from "@/auth/useAuth";
+import { useAuth } from "@/theme/auth/useAuth";
 // ROUTE GROUP FILES
 import { userRoutes } from "./userRoutes";
 import { orderRoutes } from "./orderRoutes";
@@ -27,14 +27,14 @@ const router = createRouter({
     {
       path: "/",
       name: "Home",
-      component: () => import("@/pages/home/index.vue"),
+      component: () => import("@/theme/pages/home/index.vue"),
       meta: { requireAuth: false }
     },
     {
       path: "/dashboard",
       name: "Dashboards",
       redirect: "/learning-management",
-      component: () => import("@/layout/DefaultLayout.vue"),
+      component: () => import("@/theme/layout/DefaultLayout.vue"),
       children: [
         ...dashboardRoutes,
         ...userRoutes,

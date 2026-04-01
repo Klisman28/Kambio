@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 // SHADCN COMPONENTS
-import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
+import { Button } from "@/theme/components/ui/button";
+import { Progress } from "@/theme/components/ui/progress";
 // CUSTOM COMPONENT
-import Icon from "@/components/Icon.vue";
+import Icon from "@/theme/components/Icon.vue";
 
 defineProps<{ id: number; title: string; size: string }>();
 

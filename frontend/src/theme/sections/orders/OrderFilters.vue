@@ -6,12 +6,12 @@ import {
   SelectValue,
   SelectContent,
   SelectTrigger
-} from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
+} from "@/theme/components/ui/select";
+import { Input } from "@/theme/components/ui/input";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
+import Icon from "@/theme/components/Icon.vue";
 // DATA STORE
-import { useOrders } from "@/stores/orders";
+import { useOrders } from "@/theme/stores/orders";
 // CUSTOM COMPOSABLE
 import { useOrderStatuses } from "./hooks/useOrderStatuses";
 import { usePaymentMethods } from "./hooks/usePaymentMethods";

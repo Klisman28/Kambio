@@ -1,16 +1,16 @@
 <script setup lang="ts">
 // SHADCN COMPONENTS
-import { Badge } from "@/components/ui/badge";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import { Badge } from "@/theme/components/ui/badge";
+import { ToggleGroup, ToggleGroupItem } from "@/theme/components/ui/toggle-group";
+import { Table, TableBody, TableCell, TableRow } from "@/theme/components/ui/table";
 // CUSTOM COMPONENTS
-import Icon from "@/components/Icon.vue";
-import Rating from "@/components/Rating.vue";
+import Icon from "@/theme/components/Icon.vue";
+import Rating from "@/theme/components/Rating.vue";
 // CUSTOM UTILS METHODS
-import { cn } from "@/lib/utils";
-import { currency } from "@/lib/currency";
+import { cn } from "@/theme/lib/utils";
+import { currency } from "@/theme/lib/currency";
 // TYPES
-import { Product } from "@/types/Product";
+import { Product } from "@/theme/types/Product";
 
 defineProps<{ product: Product }>();
 </script>

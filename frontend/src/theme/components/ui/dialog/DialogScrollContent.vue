@@ -10,7 +10,7 @@ import {
   type DialogContentProps
 } from "radix-vue";
 import { X } from "lucide-vue-next";
-import { cn } from "@/lib/utils";
+import { cn } from "@/theme/lib/utils";
 
 const props = defineProps<DialogContentProps & { class?: HTMLAttributes["class"] }>();
 const emits = defineEmits<DialogContentEmits>();

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ErrorMessage, useField } from "vee-validate";
 import { FileRejectReason, useDropzone } from "vue3-dropzone";
-import Icon from "@/components/Icon.vue";
-import { Label } from "@/components/ui/label";
+import Icon from "@/theme/components/Icon.vue";
+import { Label } from "@/theme/components/ui/label";
 
 const { value, errorMessage, setValue, setErrors } = useField<any>("images");
 

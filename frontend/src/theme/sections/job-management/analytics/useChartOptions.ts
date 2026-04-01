@@ -1,4 +1,4 @@
-import { useApexChartOptions } from "@/hooks/useApexChartOptions";
+import { useApexChartOptions } from "@/theme/hooks/useApexChartOptions";
 
 export const chartOptions = useApexChartOptions({
   colors: ["#2499EF"],

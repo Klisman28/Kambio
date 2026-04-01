@@ -2,11 +2,11 @@
 import { ref, onMounted, watch } from "vue";
 import { useRoute, RouterLink, useRouter } from "vue-router";
 // SHADCDN COMPONENTS
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/theme/components/ui/collapsible";
 // CUSTOM COMPONENT
-import Icon from "@/components/Icon.vue";
+import Icon from "@/theme/components/Icon.vue";
 // CUSTOM STORE
-import { useSidebar } from "@/stores/sidebar";
+import { useSidebar } from "@/theme/stores/sidebar";
 // TYPE
 import { NavItem } from "./type";
 
