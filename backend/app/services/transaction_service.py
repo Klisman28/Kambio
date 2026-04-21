@@ -32,6 +32,8 @@ class TransactionService:
         status_filter: str | None = None,
         client_id: UUID | None = None,
         transaction_type: TransactionType | None = None,
+        date_from: date | None = None,
+        date_to: date | None = None,
     ) -> list[TransactionOut]:
         rows = self.repo.list_all(
             skip=skip,
@@ -39,6 +41,8 @@ class TransactionService:
             status_filter=status_filter,
             client_id=client_id,
             transaction_type=transaction_type,
+            date_from=date_from,
+            date_to=date_to,
         )
         result = []
         for row in rows:

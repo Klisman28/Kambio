@@ -1,3 +1,4 @@
+import datetime
 from typing import List, Optional
 from uuid import UUID
 
@@ -24,6 +25,8 @@ def list_transactions(
         None,
         description="Filtrar por tipo: SELL_MXN, BUY_MXN, SELL_GTQ, BUY_GTQ, PAYMENT, WITHDRAWAL",
     ),
+    date_from: Optional[datetime.date] = Query(None, description="Fecha inicio (YYYY-MM-DD)"),
+    date_to: Optional[datetime.date] = Query(None, description="Fecha fin (YYYY-MM-DD)"),
     db: Session = Depends(get_db),
     _: User = Depends(get_current_user),
 ):
@@ -33,6 +36,8 @@ def list_transactions(
         status_filter=status,
         client_id=client_id,
         transaction_type=transaction_type,
+        date_from=date_from,
+        date_to=date_to,
     )
 
 
