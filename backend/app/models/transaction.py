@@ -13,6 +13,10 @@ class TransactionType(str, enum.Enum):
     SELL_MXN = "SELL_MXN"
     # Empresa compra MXN del cliente: cliente entrega MXN, recibe GTQ
     BUY_MXN = "BUY_MXN"
+    # Empresa vende GTQ al cliente: cliente entrega MXN, recibe GTQ
+    SELL_GTQ = "SELL_GTQ"
+    # Empresa compra GTQ del cliente: cliente entrega GTQ, recibe MXN
+    BUY_GTQ = "BUY_GTQ"
     # Abono al cliente (solo una divisa)
     PAYMENT = "PAYMENT"
     # Retiro del cliente (solo una divisa)

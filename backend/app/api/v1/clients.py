@@ -1,10 +1,13 @@
+import datetime
+from decimal import Decimal
 from typing import List, Optional
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.orm import Session
 
 from app.db.session import get_db
+from app.models.ledger_entry import Currency
 from app.models.user import User
 from app.schemas.client import ClientCreate, ClientOut, ClientUpdate
 from app.schemas.ledger import BalanceOut, LedgerResponse
@@ -60,27 +63,65 @@ def update_client(
     "/{client_id}/balance",
     response_model=BalanceOut,
     summary="Saldo actual del cliente",
+    description=(
+        "Retorna la posición financiera del cliente por divisa con interpretación semántica. "
+        "Si se provee `reference_exchange_rate` (MXN por 1 GTQ), se incluyen "
+        "`equivalent_in_mxn` y `equivalent_in_gtq` como referencia visual únicamente — "
+        "NO son saldo oficial y no alteran `raw_balance` ni `position`."
+    ),
 )
 def get_balance(
     client_id: UUID,
+    reference_exchange_rate: Optional[Decimal] = Query(
+        None,
+        gt=0,
+        description="Tasa de referencia MXN/GTQ para equivalencia visual (no oficial)",
+    ),
     db: Session = Depends(get_db),
     _: User = Depends(get_current_user),
 ):
     ClientService(db).get_or_404(client_id)  # valida existencia
-    return LedgerService(db).get_balance(client_id)
+    return LedgerService(db).get_balance(client_id, reference_exchange_rate=reference_exchange_rate)
 
 
 @router.get(
     "/{client_id}/ledger",
     response_model=LedgerResponse,
     summary="Libro mayor del cliente",
+    description=(
+        "Retorna el historial de movimientos del cliente con contexto de transacción. "
+        "Solo incluye entradas de transacciones ACTIVE. "
+        "CREDIT (+) = dinero que entra al cliente. DEBIT (−) = dinero que sale. "
+        "El balance siempre se calcula desde el historial, nunca se almacena."
+    ),
 )
 def get_ledger(
     client_id: UUID,
     skip: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=200),
+    currency: Optional[Currency] = Query(None, description="Filtrar por divisa: MXN o GTQ"),
+    date_from: Optional[datetime.date] = Query(None, description="Desde fecha (YYYY-MM-DD)"),
+    date_to: Optional[datetime.date] = Query(None, description="Hasta fecha (YYYY-MM-DD)"),
+    reference_exchange_rate: Optional[Decimal] = Query(
+        None,
+        gt=0,
+        description="Tasa de referencia MXN/GTQ para equivalencia visual en el saldo (no oficial)",
+    ),
     db: Session = Depends(get_db),
     _: User = Depends(get_current_user),
 ):
-    ClientService(db).get_or_404(client_id)  # valida existencia
-    return LedgerService(db).get_ledger(client_id, skip=skip, limit=limit)
+    if date_from and date_to and date_to < date_from:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="date_to debe ser mayor o igual a date_from",
+        )
+    ClientService(db).get_or_404(client_id)
+    return LedgerService(db).get_ledger(
+        client_id,
+        currency=currency,
+        date_from=date_from,
+        date_to=date_to,
+        skip=skip,
+        limit=limit,
+        reference_exchange_rate=reference_exchange_rate,
+    )

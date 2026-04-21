@@ -30,6 +30,11 @@ class CashSession(Base):
 
     opening_amount_mxn = Column(Numeric(15, 2), nullable=False, default=Decimal("0"))
     opening_amount_gtq = Column(Numeric(15, 2), nullable=False, default=Decimal("0"))
+
+    # Saldo corriente — se actualiza con cada transacción
+    current_amount_mxn = Column(Numeric(15, 2), nullable=False, default=Decimal("0"))
+    current_amount_gtq = Column(Numeric(15, 2), nullable=False, default=Decimal("0"))
+
     closing_amount_mxn = Column(Numeric(15, 2))
     closing_amount_gtq = Column(Numeric(15, 2))
     difference_mxn = Column(Numeric(15, 2))

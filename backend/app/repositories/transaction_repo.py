@@ -1,9 +1,17 @@
-from typing import List, Optional
+from datetime import date, datetime, time
+from typing import List, NamedTuple, Optional
 from uuid import UUID
 
+from sqlalchemy import func
 from sqlalchemy.orm import Session
 
-from app.models.transaction import Transaction, TransactionStatus
+from app.models.client import Client
+from app.models.transaction import Transaction, TransactionStatus, TransactionType
+
+
+class TransactionRow(NamedTuple):
+    transaction: Transaction
+    client_name: str
 
 
 class TransactionRepository:
@@ -35,16 +43,33 @@ class TransactionRepository:
         self,
         skip: int = 0,
         limit: int = 50,
-        status: str | None = None,
-    ) -> List[Transaction]:
-        q = self.db.query(Transaction)
-        if status:
-            q = q.filter(Transaction.status == status)
-        return q.order_by(Transaction.created_at.desc()).offset(skip).limit(limit).all()
+        status_filter: str | None = None,
+        client_id: UUID | None = None,
+        transaction_type: TransactionType | None = None,
+    ) -> List[TransactionRow]:
+        q = (
+            self.db.query(Transaction, Client.full_name)
+            .join(Client, Transaction.client_id == Client.id)
+        )
+        if status_filter:
+            q = q.filter(Transaction.status == status_filter)
+        if client_id:
+            q = q.filter(Transaction.client_id == client_id)
+        if transaction_type:
+            q = q.filter(Transaction.transaction_type == transaction_type)
+        rows = q.order_by(Transaction.created_at.desc()).offset(skip).limit(limit).all()
+        return [TransactionRow(transaction=txn, client_name=name) for txn, name in rows]
 
-    def count_all(self) -> int:
-        from sqlalchemy import func
-        return self.db.query(func.count(Transaction.id)).scalar() or 0
+    def count_by_date(self, d: date) -> int:
+        """Count of transactions created on a specific calendar date (UTC)."""
+        start = datetime.combine(d, time.min)
+        end = datetime.combine(d, time.max)
+        return (
+            self.db.query(func.count(Transaction.id))
+            .filter(Transaction.created_at >= start, Transaction.created_at <= end)
+            .scalar()
+            or 0
+        )
 
     def create(self, txn: Transaction) -> Transaction:
         self.db.add(txn)

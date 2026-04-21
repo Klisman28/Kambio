@@ -1,7 +1,8 @@
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 from uuid import UUID
 
 from fastapi import HTTPException, status
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from app.models.transaction import Transaction, TransactionStatus
@@ -9,7 +10,8 @@ from app.models.user import User
 from app.repositories.cash_repo import CashRepository
 from app.repositories.client_repo import ClientRepository
 from app.repositories.transaction_repo import TransactionRepository
-from app.schemas.transaction import TransactionCreate, VoidRequest
+from app.models.transaction import TransactionType
+from app.schemas.transaction import TransactionCreate, TransactionOut, VoidRequest
 from app.services.audit_service import AuditService
 from app.services.ledger_service import LedgerService
 
@@ -23,8 +25,27 @@ class TransactionService:
         self.audit = AuditService(db)
         self.db = db
 
-    def list(self, skip: int = 0, limit: int = 50, status: str | None = None):
-        return self.repo.list_all(skip=skip, limit=limit, status=status)
+    def list(
+        self,
+        skip: int = 0,
+        limit: int = 50,
+        status_filter: str | None = None,
+        client_id: UUID | None = None,
+        transaction_type: TransactionType | None = None,
+    ) -> list[TransactionOut]:
+        rows = self.repo.list_all(
+            skip=skip,
+            limit=limit,
+            status_filter=status_filter,
+            client_id=client_id,
+            transaction_type=transaction_type,
+        )
+        result = []
+        for row in rows:
+            out = TransactionOut.model_validate(row.transaction)
+            out.client_name = row.client_name
+            result.append(out)
+        return result
 
     def create(self, payload: TransactionCreate, current_user: User) -> Transaction:
         # 1. Verificar caja abierta
@@ -66,6 +87,12 @@ class TransactionService:
         for entry in entries:
             self.db.add(entry)
 
+        # 5b. Actualizar saldo corriente de caja
+        # La caja refleja el efecto INVERSO al ledger del cliente:
+        #   - Lo que el cliente recibe (+CREDIT) sale de caja (-)
+        #   - Lo que el cliente entrega (-DEBIT) entra a caja (+)
+        self._update_cash_balance(cash, txn)
+
         # 6. Registrar auditoría
         self.audit.log(
             action="transaction.create",
@@ -84,7 +111,19 @@ class TransactionService:
         )
 
         # 7. Commit único — ACID
-        self.db.commit()
+        try:
+            self.db.commit()
+        except IntegrityError as e:
+            self.db.rollback()
+            if "ix_transactions_code" in str(e.orig) or "Duplicate entry" in str(e.orig):
+                raise HTTPException(
+                    status_code=status.HTTP_409_CONFLICT,
+                    detail="Colisión de código de transacción. Reintenta la operación.",
+                )
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Error al guardar la transacción.",
+            )
         self.db.refresh(txn)
         return txn
 
@@ -123,6 +162,60 @@ class TransactionService:
         return txn
 
     def _generate_code(self) -> str:
-        today = date.today().strftime("%Y%m%d")
-        count = self.repo.count_all()
-        return f"TXN-{today}-{count + 1:05d}"
+        # Usar UTC para que coincida con created_at guardado via datetime.utcnow()
+        today_utc = datetime.now(timezone.utc).date()
+        today_str = today_utc.strftime("%Y%m%d")
+        daily_count = self.repo.count_by_date(today_utc)
+        return f"TXN-{today_str}-{daily_count + 1:05d}"
+
+    def _update_cash_balance(self, cash, txn: Transaction) -> None:
+        """
+        Actualiza el saldo corriente de la caja según el tipo de transacción.
+        Espejo inverso del ledger del cliente:
+          - Lo que el cliente recibe → sale de caja
+          - Lo que el cliente entrega → entra a caja
+        """
+        t = txn.transaction_type
+
+        if t == TransactionType.SELL_MXN:
+            # Vendemos MXN al cliente: MXN sale, GTQ entra
+            cash.current_amount_mxn -= txn.amount_mxn
+            cash.current_amount_gtq += txn.amount_gtq
+
+        elif t == TransactionType.BUY_MXN:
+            # Compramos MXN del cliente: MXN entra, GTQ sale
+            cash.current_amount_mxn += txn.amount_mxn
+            cash.current_amount_gtq -= txn.amount_gtq
+
+        elif t == TransactionType.SELL_GTQ:
+            # Vendemos GTQ al cliente: GTQ sale, MXN entra
+            cash.current_amount_gtq -= txn.amount_gtq
+            cash.current_amount_mxn += txn.amount_mxn
+
+        elif t == TransactionType.BUY_GTQ:
+            # Compramos GTQ del cliente: GTQ entra, MXN sale
+            cash.current_amount_gtq += txn.amount_gtq
+            cash.current_amount_mxn -= txn.amount_mxn
+
+        elif t == TransactionType.PAYMENT:
+            # Abono: cliente paga → dinero entra a caja
+            if txn.amount_mxn > 0:
+                cash.current_amount_mxn += txn.amount_mxn
+            if txn.amount_gtq > 0:
+                cash.current_amount_gtq += txn.amount_gtq
+
+        elif t == TransactionType.WITHDRAWAL:
+            # Retiro: cliente retira → dinero sale de caja
+            if txn.amount_mxn > 0:
+                cash.current_amount_mxn -= txn.amount_mxn
+            if txn.amount_gtq > 0:
+                cash.current_amount_gtq -= txn.amount_gtq
+
+        # Sumar comisión a caja (la comisión siempre es ingreso para la empresa)
+        if txn.commission and txn.commission > 0:
+            # Comisión se cobra en la divisa que el cliente entrega
+            if t in (TransactionType.SELL_MXN, TransactionType.SELL_GTQ):
+                # El cliente entrega GTQ (SELL_MXN) o MXN (SELL_GTQ)
+                pass  # ya está incluida en amount
+            elif t in (TransactionType.BUY_MXN, TransactionType.BUY_GTQ):
+                pass  # ya está incluida en amount

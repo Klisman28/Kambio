@@ -30,16 +30,29 @@ class TransactionCreate(BaseModel):
         mxn = self.amount_mxn
         gtq = self.amount_gtq
 
-        if t in (TransactionType.SELL_MXN, TransactionType.BUY_MXN):
+        _FX_TYPES = (
+            TransactionType.SELL_MXN,
+            TransactionType.BUY_MXN,
+            TransactionType.SELL_GTQ,
+            TransactionType.BUY_GTQ,
+        )
+
+        if t in _FX_TYPES:
             if mxn <= 0 or gtq <= 0:
                 raise ValueError(
-                    f"{t} requiere amount_mxn > 0 y amount_gtq > 0"
+                    f"{t.value} requiere amount_mxn > 0 y amount_gtq > 0 "
+                    "(operación de cambio de divisa)"
+                )
+            if self.exchange_rate is None or self.exchange_rate <= 0:
+                raise ValueError(
+                    f"{t.value} requiere exchange_rate > 0"
                 )
         elif t in (TransactionType.PAYMENT, TransactionType.WITHDRAWAL):
             active = (1 if mxn > 0 else 0) + (1 if gtq > 0 else 0)
             if active != 1:
                 raise ValueError(
-                    f"{t} requiere exactamente una divisa con monto > 0"
+                    f"{t.value} requiere exactamente una divisa con monto > 0 "
+                    "(no se puede usar MXN y GTQ al mismo tiempo)"
                 )
         return self
 
@@ -59,6 +72,7 @@ class TransactionOut(BaseModel):
     id: UUID
     code: str
     client_id: UUID
+    client_name: Optional[str] = None
     cash_session_id: UUID
     transaction_type: TransactionType
     amount_mxn: Decimal

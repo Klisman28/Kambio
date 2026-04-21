@@ -1,3 +1,4 @@
+from typing import Optional
 from uuid import UUID
 
 from fastapi import APIRouter, Depends
@@ -12,12 +13,16 @@ from app.services.cash_service import CashService
 router = APIRouter(prefix="/cash", tags=["cash"])
 
 
-@router.get("/current", response_model=CashSessionOut, summary="Caja actualmente abierta")
+@router.get(
+    "/current",
+    response_model=Optional[CashSessionOut],
+    summary="Caja actualmente abierta (null si no hay ninguna)",
+)
 def get_current_cash(
     db: Session = Depends(get_db),
     _: User = Depends(get_current_user),
 ):
-    return CashService(db).get_current()
+    return CashService(db).get_current_or_none()
 
 
 @router.post("/open", response_model=CashSessionOut, status_code=201, summary="Abrir caja")

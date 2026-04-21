@@ -20,7 +20,8 @@ http.interceptors.request.use((config) => {
 http.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
+    // Si recibimos 401 y NO es del propio endpoint de login (para no recargar infinitamente o borrar el form)
+    if (error.response?.status === 401 && !error.config.url?.includes('auth/login')) {
       const authStore = useAuthStore()
       authStore.logout()
       window.location.href = '/login'

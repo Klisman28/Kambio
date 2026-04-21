@@ -16,6 +16,29 @@ export interface TransactionReport {
   transactions: Transaction[]
 }
 
+export interface DailyDataPoint {
+  date: string
+  count: number
+  amount_mxn: string
+  amount_gtq: string
+  commission: string
+}
+
+export interface TypeDistributionItem {
+  transaction_type: string
+  count: number
+  total_mxn: string
+  total_gtq: string
+  total_commission: string
+}
+
+export interface TransactionAnalytics {
+  start_date: string
+  end_date: string
+  daily_series: DailyDataPoint[]
+  type_distribution: TypeDistributionItem[]
+}
+
 export interface CashReportSummary {
   total_sessions: number
   total_difference_mxn: string
@@ -31,16 +54,19 @@ export function useReports() {
   const loading = ref(false)
   
   const transactionReport = ref<TransactionReport | null>(null)
+  const transactionAnalytics = ref<TransactionAnalytics | null>(null)
   const cashReport = ref<CashReport | null>(null)
 
   async function loadTransactionReport(startDate: string, endDate: string) {
     loading.value = true
     try {
-      const { data } = await http.get('/api/v1/reports/transactions', {
-        params: { start_date: startDate, end_date: endDate }
-      })
-      transactionReport.value = data
-      return data
+      const [{ data: reportData }, { data: analyticsData }] = await Promise.all([
+        http.get('/api/v1/reports/transactions', { params: { start_date: startDate, end_date: endDate } }),
+        http.get('/api/v1/reports/transactions/analytics', { params: { start_date: startDate, end_date: endDate } })
+      ])
+      transactionReport.value = reportData
+      transactionAnalytics.value = analyticsData
+      return reportData
     } catch (error) {
       push.error('Error al generar reporte de transacciones')
     } finally {
@@ -66,6 +92,7 @@ export function useReports() {
   return {
     loading,
     transactionReport,
+    transactionAnalytics,
     cashReport,
     loadTransactionReport,
     loadCashReport

@@ -39,6 +39,8 @@ class CashSessionOut(BaseModel):
     status: CashStatus
     opening_amount_mxn: Decimal
     opening_amount_gtq: Decimal
+    current_amount_mxn: Decimal = Decimal("0")
+    current_amount_gtq: Decimal = Decimal("0")
     closing_amount_mxn: Optional[Decimal] = None
     closing_amount_gtq: Optional[Decimal] = None
     difference_mxn: Optional[Decimal] = None

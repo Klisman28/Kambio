@@ -109,6 +109,10 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 18v-4"/><path d="M14 18v-6"/></svg>
               <span class="text-sm font-medium">Reportes</span>
             </router-link>
+            <router-link to="/ledger/:clientId" class="flex flex-col items-center justify-center p-4 text-center transition-all border rounded-lg border-border bg-background hover:bg-slate-100 dark:hover:bg-slate-800 hover:border-slate-400 hover:shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-2 text-slate-500"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+              <span class="text-sm font-medium">Libro Mayor</span>
+            </router-link>
           </div>
         </div>
 
@@ -128,7 +132,12 @@
               </TableHeader>
               <TableBody>
                 <TableRow v-for="txn in summary.recent_transactions" :key="txn.id">
-                  <TableCell class="font-medium whitespace-nowrap">{{ txn.client_name }}</TableCell>
+                  <TableCell class="font-medium whitespace-nowrap">
+                    <router-link :to="`/ledger/${txn.client_id}?from=dashboard`" class="text-primary hover:underline hover:text-primary-dark" title="Ver Libro Mayor del Cliente" v-if="txn.client_id">
+                      {{ txn.client_name }}
+                    </router-link>
+                    <span v-else>{{ txn.client_name }}</span>
+                  </TableCell>
                   <TableCell>
                     <span class="px-2 py-0.5 text-[10px] uppercase font-bold rounded-full" :class="typeClass(txn.transaction_type)">
                       {{ typeLabel(txn.transaction_type) }}
@@ -176,6 +185,7 @@ interface DashboardSummary {
     id: string
     code: string
     client_name: string
+    client_id?: string
     transaction_type: string
     amount_mxn: string
     amount_gtq: string
@@ -198,6 +208,8 @@ const typeLabel = (t: string) => {
   const m: Record<string, string> = {
     SELL_MXN: 'Venta MXN',
     BUY_MXN: 'Compra MXN',
+    SELL_GTQ: 'Venta GTQ',
+    BUY_GTQ: 'Compra GTQ',
     PAYMENT: 'Abono',
     WITHDRAWAL: 'Retiro',
   }
@@ -208,6 +220,8 @@ const typeClass = (t: string) => {
   const m: Record<string, string> = {
     SELL_MXN: 'bg-info-light text-info-dark',
     BUY_MXN: 'bg-success-light text-success-dark',
+    SELL_GTQ: 'bg-primary-light text-primary-dark',
+    BUY_GTQ: 'bg-accent-light text-accent-dark',
     PAYMENT: 'bg-primary-light text-primary-dark',
     WITHDRAWAL: 'bg-warning-light text-warning-dark',
   }

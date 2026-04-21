@@ -1,10 +1,11 @@
 from typing import List, Optional
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.orm import Session
 
 from app.db.session import get_db
+from app.models.transaction import TransactionType
 from app.models.user import User
 from app.schemas.transaction import TransactionCreate, TransactionOut, VoidRequest
 from app.services.auth_service import get_current_user
@@ -18,10 +19,37 @@ def list_transactions(
     skip: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=200),
     status: Optional[str] = Query(None, description="Filtrar por estado: ACTIVE o VOIDED"),
+    client_id: Optional[UUID] = Query(None, description="Filtrar por cliente"),
+    transaction_type: Optional[TransactionType] = Query(
+        None,
+        description="Filtrar por tipo: SELL_MXN, BUY_MXN, SELL_GTQ, BUY_GTQ, PAYMENT, WITHDRAWAL",
+    ),
     db: Session = Depends(get_db),
     _: User = Depends(get_current_user),
 ):
-    return TransactionService(db).list(skip=skip, limit=limit, status=status)
+    return TransactionService(db).list(
+        skip=skip,
+        limit=limit,
+        status_filter=status,
+        client_id=client_id,
+        transaction_type=transaction_type,
+    )
+
+
+@router.get("/{txn_id}", response_model=TransactionOut, summary="Obtener transacción por ID")
+def get_transaction(
+    txn_id: UUID,
+    db: Session = Depends(get_db),
+    _: User = Depends(get_current_user),
+):
+    svc = TransactionService(db)
+    txn = svc.repo.get_by_id(txn_id)
+    if not txn:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Transacción {txn_id} no encontrada",
+        )
+    return TransactionOut.model_validate(txn)
 
 
 @router.post("", response_model=TransactionOut, status_code=201, summary="Registrar transacción")

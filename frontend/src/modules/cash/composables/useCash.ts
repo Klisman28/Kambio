@@ -7,6 +7,8 @@ export interface CashSession {
   status: 'open' | 'closed'
   opening_amount_mxn: string
   opening_amount_gtq: string
+  current_amount_mxn: string
+  current_amount_gtq: string
   closing_amount_mxn?: string
   closing_amount_gtq?: string
   difference_mxn?: string
@@ -28,7 +30,12 @@ export function useCash() {
     noSession.value = false
     try {
       const { data } = await http.get('/api/v1/cash/current')
-      currentSession.value = data
+      if (!data) {
+        currentSession.value = null
+        noSession.value = true
+      } else {
+        currentSession.value = data
+      }
     } catch (error: any) {
       if (error.response?.status === 404) {
         currentSession.value = null

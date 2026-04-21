@@ -30,7 +30,11 @@
           <TableBody>
             <TableRow v-for="txn in transactions" :key="txn.id">
               <TableCell class="font-mono text-xs text-primary whitespace-nowrap">{{ txn.code }}</TableCell>
-              <TableCell class="font-medium whitespace-nowrap">{{ clientName(txn.client_id) }}</TableCell>
+              <TableCell class="font-medium whitespace-nowrap">
+                <router-link :to="{ name: 'ledger', params: { clientId: txn.client_id }, query: { from: 'transactions' } }" class="text-primary hover:underline" title="Ver libro mayor">
+                  {{ clientName(txn.client_id) }}
+                </router-link>
+              </TableCell>
               <TableCell>
                 <span class="px-2 py-0.5 text-[10px] uppercase font-bold rounded-full" :class="typeClass(txn.transaction_type)">
                   {{ typeLabel(txn.transaction_type) }}
@@ -90,35 +94,60 @@
             <label class="text-sm font-medium text-muted">Tipo de Operación *</label>
             <select v-model="createForm.transaction_type" required class="w-full h-10 px-3 text-sm bg-transparent border rounded-md border-border text-foreground outline-none focus:border-primary focus:ring-1 focus:ring-primary">
               <option value="" disabled>Seleccionar tipo</option>
-              <option value="SELL_MXN">Venta MXN (cliente recibe MXN, entrega GTQ)</option>
-              <option value="BUY_MXN">Compra MXN (cliente entrega MXN, recibe GTQ)</option>
-              <option value="PAYMENT">Abono (una divisa)</option>
-              <option value="WITHDRAWAL">Retiro (una divisa)</option>
+              <option value="SELL_MXN">Venta MXN (Cliente recibe MXN, entrega GTQ)</option>
+              <option value="BUY_MXN">Compra MXN (Cliente entrega MXN, recibe GTQ)</option>
+              <option value="SELL_GTQ">Venta GTQ (Cliente recibe GTQ, entrega MXN)</option>
+              <option value="BUY_GTQ">Compra GTQ (Cliente entrega GTQ, recibe MXN)</option>
+              <option value="PAYMENT">Abono (Ingreso de divisa)</option>
+              <option value="WITHDRAWAL">Retiro (Salida de divisa)</option>
             </select>
           </div>
 
-          <!-- Montos -->
-          <div class="grid grid-cols-2 gap-4">
-            <div class="flex flex-col gap-1.5">
-              <label class="text-sm font-medium text-muted">Monto MXN</label>
-              <input v-model.number="createForm.amount_mxn" type="number" step="0.01" min="0" class="w-full h-10 px-3 text-sm bg-transparent border rounded-md border-border text-foreground outline-none focus:border-primary focus:ring-1 focus:ring-primary" />
-            </div>
-            <div class="flex flex-col gap-1.5">
-              <label class="text-sm font-medium text-muted">Monto GTQ</label>
-              <input v-model.number="createForm.amount_gtq" type="number" step="0.01" min="0" class="w-full h-10 px-3 text-sm bg-transparent border rounded-md border-border text-foreground outline-none focus:border-primary focus:ring-1 focus:ring-primary" />
-            </div>
-          </div>
+          <!-- Formulario Dinámico -->
+          <div v-if="createForm.transaction_type" class="space-y-4">
+            
+            <!-- FX TABS (Venta / Compra) -->
+            <template v-if="isFx">
+              <div class="grid grid-cols-2 gap-4">
+                <div class="flex flex-col gap-1.5">
+                  <label class="text-sm font-bold text-primary">Monto Origen ({{ sourceCurrency }}) *</label>
+                  <input :value="sourceAmount" @input="updateSource" type="number" step="0.01" min="0.01" required class="w-full h-10 px-3 text-sm bg-transparent border rounded-md border-primary text-foreground outline-none focus:ring-1 focus:ring-primary" placeholder="Valor entregado por cliente" />
+                </div>
+                <div class="flex flex-col gap-1.5">
+                  <label class="text-sm font-bold text-primary">Tipo de Cambio *</label>
+                  <input v-model.number="createForm.exchange_rate" type="number" step="0.00001" min="0.00001" required placeholder="Ej: 0.423" class="w-full h-10 px-3 text-sm bg-transparent border rounded-md border-primary text-foreground outline-none focus:ring-1 focus:ring-primary" />
+                </div>
+              </div>
 
-          <!-- Comisión y Tipo de Cambio -->
-          <div class="grid grid-cols-2 gap-4">
+              <div class="bg-success-light/30 border border-success-light rounded-lg p-4 space-y-2 mt-2">
+                <div class="flex flex-col gap-1.5">
+                  <label class="text-sm font-bold text-foreground">Monto Destino Calculado ({{ targetCurrency }})</label>
+                  <input :value="targetAmount" readonly type="number" step="0.01" class="w-full h-10 px-3 text-lg font-mono font-bold bg-white dark:bg-slate-900 border rounded-md border-border text-foreground outline-none opacity-90 cursor-not-allowed" />
+                </div>
+                <p class="text-xs text-muted">💡 Fórmula: {{ formulaText }}</p>
+              </div>
+            </template>
+
+            <!-- NO FX (Abonos / Retiros) -->
+            <template v-else>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="flex flex-col gap-1.5">
+                  <label class="text-sm font-medium text-muted">Monto MXN</label>
+                  <input v-model.number="createForm.amount_mxn" type="number" step="0.01" min="0" class="w-full h-10 px-3 text-sm bg-transparent border rounded-md border-border text-foreground outline-none focus:border-primary focus:ring-1 focus:ring-primary" />
+                </div>
+                <div class="flex flex-col gap-1.5">
+                  <label class="text-sm font-medium text-muted">Monto GTQ</label>
+                  <input v-model.number="createForm.amount_gtq" type="number" step="0.01" min="0" class="w-full h-10 px-3 text-sm bg-transparent border rounded-md border-border text-foreground outline-none focus:border-primary focus:ring-1 focus:ring-primary" />
+                </div>
+              </div>
+            </template>
+
+            <!-- Comisión -->
             <div class="flex flex-col gap-1.5">
-              <label class="text-sm font-medium text-muted">Comisión</label>
-              <input v-model.number="createForm.commission" type="number" step="0.01" min="0" class="w-full h-10 px-3 text-sm bg-transparent border rounded-md border-border text-foreground outline-none focus:border-primary focus:ring-1 focus:ring-primary" />
+              <label class="text-sm font-medium text-muted">Comisión Cobrada</label>
+              <input v-model.number="createForm.commission" type="number" step="0.01" min="0" class="w-full h-10 px-3 text-sm bg-transparent border rounded-md border-border text-foreground outline-none focus:border-primary focus:ring-1 focus:ring-primary" placeholder="Monto fijo pagado por el cliente" />
             </div>
-            <div class="flex flex-col gap-1.5">
-              <label class="text-sm font-medium text-muted">Tipo de Cambio</label>
-              <input v-model.number="createForm.exchange_rate" type="number" step="0.0001" min="0" placeholder="Opcional" class="w-full h-10 px-3 text-sm bg-transparent border rounded-md border-border text-foreground outline-none focus:border-primary focus:ring-1 focus:ring-primary" />
-            </div>
+
           </div>
 
           <!-- Notas -->
@@ -160,7 +189,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted, computed } from 'vue'
+import { ref, reactive, onMounted, computed, watch } from 'vue'
 import { useTransactions, type Transaction } from '@/modules/transactions/composables/useTransactions'
 import { useClients } from '@/modules/clients/composables/useClients'
 import { Button } from '@/theme/components/ui/button'
@@ -191,6 +220,57 @@ onMounted(async () => {
   await Promise.all([loadTransactions(), loadClients()])
 })
 
+const isFx = computed(() => ['SELL_MXN', 'BUY_MXN', 'SELL_GTQ', 'BUY_GTQ'].includes(createForm.transaction_type))
+
+const sourceCurrency = computed(() => {
+  if (['SELL_MXN', 'BUY_GTQ'].includes(createForm.transaction_type)) return 'GTQ'
+  if (['BUY_MXN', 'SELL_GTQ'].includes(createForm.transaction_type)) return 'MXN'
+  return '—'
+})
+
+const targetCurrency = computed(() => {
+  if (sourceCurrency.value === 'GTQ') return 'MXN'
+  if (sourceCurrency.value === 'MXN') return 'GTQ'
+  return '—'
+})
+
+const formulaText = computed(() => {
+  if (sourceCurrency.value === 'MXN') return 'Monto MXN × Tipo de Cambio = Monto GTQ'
+  if (sourceCurrency.value === 'GTQ') return 'Monto GTQ × Tipo de Cambio = Monto MXN'
+  return ''
+})
+
+const sourceAmount = computed(() => {
+  return sourceCurrency.value === 'MXN' ? createForm.amount_mxn : (sourceCurrency.value === 'GTQ' ? createForm.amount_gtq : 0)
+})
+
+const targetAmount = computed(() => {
+  return targetCurrency.value === 'MXN' ? createForm.amount_mxn : (targetCurrency.value === 'GTQ' ? createForm.amount_gtq : 0)
+})
+
+function updateSource(event: Event) {
+  const val = Number((event.target as HTMLInputElement).value || 0)
+  if (sourceCurrency.value === 'MXN') createForm.amount_mxn = val
+  else if (sourceCurrency.value === 'GTQ') createForm.amount_gtq = val
+}
+
+watch(
+  [() => createForm.amount_mxn, () => createForm.amount_gtq, () => createForm.exchange_rate, () => createForm.transaction_type],
+  () => {
+    if (isFx.value) {
+      if (createForm.exchange_rate && createForm.exchange_rate > 0) {
+        if (sourceCurrency.value === 'MXN' && createForm.amount_mxn >= 0) {
+          createForm.amount_gtq = Number((createForm.amount_mxn * createForm.exchange_rate).toFixed(2))
+        } else if (sourceCurrency.value === 'GTQ' && createForm.amount_gtq >= 0) {
+          createForm.amount_mxn = Number((createForm.amount_gtq * createForm.exchange_rate).toFixed(2))
+        }
+      }
+    } else {
+      createForm.exchange_rate = undefined
+    }
+  }
+)
+
 // Map client_id → name
 const clientMap = computed(() => {
   const map: Record<string, string> = {}
@@ -210,6 +290,8 @@ const typeLabel = (t: string) => {
   const m: Record<string, string> = {
     SELL_MXN: 'Venta MXN',
     BUY_MXN: 'Compra MXN',
+    SELL_GTQ: 'Venta GTQ',
+    BUY_GTQ: 'Compra GTQ',
     PAYMENT: 'Abono',
     WITHDRAWAL: 'Retiro',
   }
@@ -220,6 +302,8 @@ const typeClass = (t: string) => {
   const m: Record<string, string> = {
     SELL_MXN: 'bg-info-light text-info-dark',
     BUY_MXN: 'bg-success-light text-success-dark',
+    SELL_GTQ: 'bg-primary-light text-primary-dark',
+    BUY_GTQ: 'bg-accent-light text-accent-dark', // we fallback gracefully if not defined in tailwind config
     PAYMENT: 'bg-primary-light text-primary-dark',
     WITHDRAWAL: 'bg-warning-light text-warning-dark',
   }

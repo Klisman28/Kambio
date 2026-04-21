@@ -1,11 +1,18 @@
 <template>
   <div class="px-5 py-6 space-y-6">
-    <div class="flex justify-between items-center">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
       <div>
         <h1 class="text-2xl font-bold text-foreground">Clientes</h1>
         <p class="text-sm text-muted-foreground">Listado general y gestión de clientes</p>
       </div>
-      <Button @click="openCreateModal">+ Nuevo Cliente</Button>
+      <div class="flex items-center gap-3 w-full sm:w-auto">
+        <input 
+          v-model="searchQuery" 
+          placeholder="Buscar cliente por nombre..." 
+          class="w-full sm:w-64 h-10 px-3 text-sm bg-transparent border rounded-md border-border text-foreground outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+        />
+        <Button @click="openCreateModal" class="whitespace-nowrap">+ Nuevo Cliente</Button>
+      </div>
     </div>
 
     <!-- Table -->
@@ -22,7 +29,7 @@
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow v-for="client in clients" :key="client.id">
+          <TableRow v-for="client in filteredClients" :key="client.id">
             <TableCell class="font-mono text-xs text-primary">{{ client.code }}</TableCell>
             <TableCell class="font-medium">{{ client.full_name }}</TableCell>
             <TableCell class="text-muted-foreground">{{ client.id_number || '—' }}</TableCell>
@@ -36,6 +43,7 @@
             </TableCell>
             <TableCell class="text-right space-x-2">
               <Button size="sm" variant="outline" @click="openEditModal(client)">Editar</Button>
+              <Button size="sm" variant="outline" class="border-primary text-primary hover:bg-primary-light" @click="$router.push(`/ledger/${client.id}?from=clients`)">Libro Mayor</Button>
               <Button size="sm" variant="default" @click="$router.push(`/clients/${client.id}`)">Detalle</Button>
             </TableCell>
           </TableRow>
@@ -94,7 +102,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted } from 'vue'
+import { ref, reactive, onMounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useClients, type Client } from '@/modules/clients/composables/useClients'
 import { Button } from '@/theme/components/ui/button'
@@ -115,6 +123,14 @@ const isModalOpen = ref(false)
 const isEditing = ref(false)
 const formLoading = ref(false)
 const currentClientId = ref<string | null>(null)
+
+// Search State
+const searchQuery = ref('')
+const filteredClients = computed(() => {
+  if (!searchQuery.value) return clients.value
+  const lowerCaseQuery = searchQuery.value.toLowerCase()
+  return clients.value.filter(c => c.full_name.toLowerCase().includes(lowerCaseQuery))
+})
 
 const form = reactive({
   full_name: '',

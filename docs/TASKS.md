@@ -109,10 +109,10 @@
 
 | ID | Tarea | Estado |
 |---|---|---|
-| T-1.3.1 | `ledger_service.py`: cálculo de saldo desde historial | 🔲 Pendiente |
-| T-1.3.2 | Endpoints `GET /api/v1/ledger/{client_id}` e `/balance` | 🔲 Pendiente |
-| T-1.3.3 | Vista de libro mayor por cliente (frontend) | 🔲 Pendiente |
-| T-1.3.4 | Tests unitarios de cálculo de saldo | 🔲 Pendiente |
+| T-1.3.1 | `ledger_service.py`: cálculo de saldo desde historial | ✅ Hecho |
+| T-1.3.2 | Endpoints `GET /api/v1/ledger/{client_id}` e `/balance` | ✅ Hecho |
+| T-1.3.3 | Vista de libro mayor por cliente (frontend) | ✅ Hecho |
+| T-1.3.4 | Tests unitarios de cálculo de saldo | ✅ Hecho |
 
 ---
 
@@ -124,11 +124,11 @@
 
 | ID | Tarea | Estado |
 |---|---|---|
-| T-2.1.1 | Modelo ORM `cash_sessions` + migración | 🔲 Pendiente |
-| T-2.1.2 | `cash_service.py` con regla de caja única | 🔲 Pendiente |
-| T-2.1.3 | Endpoints open/close/current/history | 🔲 Pendiente |
-| T-2.1.4 | Vista apertura y cierre de caja (frontend) | 🔲 Pendiente |
-| T-2.1.5 | Indicador de estado de caja en header/dashboard | 🔲 Pendiente |
+| T-2.1.1 | Modelo ORM `cash_sessions` + migración | ✅ Hecho |
+| T-2.1.2 | `cash_service.py` con regla de caja única | ✅ Hecho |
+| T-2.1.3 | Endpoints open/close/current/history | ✅ Hecho |
+| T-2.1.4 | Vista apertura y cierre de caja (frontend) | ✅ Hecho |
+| T-2.1.5 | Indicador de estado de caja en header/dashboard | ✅ Hecho |
 
 ### 2.2 Dashboard
 
