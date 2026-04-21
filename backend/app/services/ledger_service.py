@@ -13,6 +13,9 @@ from app.schemas.ledger import (
     BalancePosition,
     CurrencyBalance,
     LedgerEntryOut,
+    LedgerGroupedResponse,
+    LedgerGroupedRow,
+    LedgerGroupedSummary,
     LedgerResponse,
 )
 
@@ -134,6 +137,77 @@ class LedgerService:
             limit=limit,
             entries=entries,
             balance=balance,
+        )
+
+    @staticmethod
+    def _net_label(net: Decimal) -> str:
+        if net > 0:
+            return "CLIENT_OWES"
+        if net < 0:
+            return "COMPANY_OWES"
+        return "SETTLED"
+
+    def get_grouped_ledger(
+        self,
+        client_id: UUID,
+        date_from: Optional[date] = None,
+        date_to: Optional[date] = None,
+        skip: int = 0,
+        limit: int = 50,
+    ) -> LedgerGroupedResponse:
+        """
+        Vista agrupada del libro mayor: una fila por transacción.
+
+        egreso  = CREDIT en ledger (empresa dio al cliente).
+        ingreso = DEBIT  en ledger (empresa recibió del cliente).
+        net     = ingreso - egreso por divisa.
+
+        El summary siempre refleja el rango completo (no la página actual).
+        Solo transacciones ACTIVE.
+        """
+        total = self.repo.count_grouped(client_id, date_from=date_from, date_to=date_to)
+        rows = self.repo.get_grouped(
+            client_id, date_from=date_from, date_to=date_to, skip=skip, limit=limit
+        )
+        totals = self.repo.get_grouped_totals(client_id, date_from=date_from, date_to=date_to)
+
+        net_mxn = totals.ingreso_mxn - totals.egreso_mxn
+        net_gtq = totals.ingreso_gtq - totals.egreso_gtq
+
+        summary = LedgerGroupedSummary(
+            total_egreso_mxn=totals.egreso_mxn,
+            total_ingreso_mxn=totals.ingreso_mxn,
+            total_egreso_gtq=totals.egreso_gtq,
+            total_ingreso_gtq=totals.ingreso_gtq,
+            net_mxn=net_mxn,
+            net_gtq=net_gtq,
+            net_mxn_label=self._net_label(net_mxn),
+            net_gtq_label=self._net_label(net_gtq),
+        )
+
+        grouped_rows = [
+            LedgerGroupedRow(
+                transaction_id=r.transaction_id,
+                date=r.created_at,
+                reference=r.code,
+                operation=r.transaction_type,
+                egreso_mxn=r.egreso_mxn,
+                egreso_gtq=r.egreso_gtq,
+                ingreso_mxn=r.ingreso_mxn,
+                ingreso_gtq=r.ingreso_gtq,
+                notes=r.notes,
+                status=r.status,
+            )
+            for r in rows
+        ]
+
+        return LedgerGroupedResponse(
+            client_id=client_id,
+            total=total,
+            skip=skip,
+            limit=limit,
+            summary=summary,
+            rows=grouped_rows,
         )
 
     def build_entries_for_transaction(
