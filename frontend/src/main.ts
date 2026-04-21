@@ -9,8 +9,8 @@ import 'notivue/notification.css'
 import 'notivue/animations.css'
 import 'nprogress/nprogress.css'
 
-// MAIN CSS (Theme Tailiwind base)
-import '@/theme/assets/index.css'
+// MAIN CSS (Theme Tailwind base)
+import './theme/assets/index.css'
 
 // ROOT FILE
 import App from './App.vue'
