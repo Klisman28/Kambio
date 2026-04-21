@@ -57,6 +57,73 @@ export interface LedgerResponse {
   balance: BalanceOut
 }
 
+// ── Ledger agrupado (nuevo endpoint: /ledger-summary) ─────────────────────────
+// Una fila por transacción. Perspectiva empresa:
+//   egreso  = CREDIT en ledger (empresa dio al cliente)
+//   ingreso = DEBIT  en ledger (empresa recibió del cliente)
+
+export interface LedgerGroupedRow {
+  transaction_id: string
+  date: string
+  reference: string
+  operation: string
+  egreso_mxn: string | number
+  egreso_gtq: string | number
+  ingreso_mxn: string | number
+  ingreso_gtq: string | number
+  notes?: string | null
+  status: string
+}
+
+export interface LedgerGroupedSummary {
+  total_egreso_mxn: string | number
+  total_ingreso_mxn: string | number
+  total_egreso_gtq: string | number
+  total_ingreso_gtq: string | number
+  /** net = ingreso - egreso. Positivo → CLIENT_OWES, negativo → COMPANY_OWES */
+  net_mxn: string | number
+  net_gtq: string | number
+  /** 'CLIENT_OWES' | 'COMPANY_OWES' | 'SETTLED' */
+  net_mxn_label: string
+  net_gtq_label: string
+}
+
+export interface LedgerGroupedResponse {
+  client_id: string
+  total: number
+  skip: number
+  limit: number
+  /** Totales del rango completo (independiente de paginación) */
+  summary: LedgerGroupedSummary
+  /** Filas paginadas, 1 por transacción */
+  rows: LedgerGroupedRow[]
+}
+
+/** Texto legible para net_mxn_label / net_gtq_label */
+export function netLabelText(label: string): string {
+  const m: Record<string, string> = {
+    CLIENT_OWES:  'El cliente debe',
+    COMPANY_OWES: 'A favor del cliente',
+    SETTLED:      'Saldado',
+  }
+  return m[label] || label
+}
+
+/** Clase CSS según net label */
+export function netLabelColor(label: string): string {
+  if (label === 'CLIENT_OWES')  return 'text-emerald-600 dark:text-emerald-400'
+  if (label === 'COMPANY_OWES') return 'text-red-600 dark:text-red-400'
+  return 'text-muted'
+}
+
+/** Border class según net label (para tarjetas destacadas) */
+export function netBorderClass(label: string): string {
+  if (label === 'CLIENT_OWES')  return 'border-emerald-300 dark:border-emerald-800'
+  if (label === 'COMPANY_OWES') return 'border-red-300 dark:border-red-800'
+  return 'border-border'
+}
+
+
 // ── Helpers UI ───────────────────────────────────────────────────────────────
 
 /** Clases CSS según la posición financiera del cliente. */

@@ -46,6 +46,8 @@ class TransactionRepository:
         status_filter: str | None = None,
         client_id: UUID | None = None,
         transaction_type: TransactionType | None = None,
+        date_from: date | None = None,
+        date_to: date | None = None,
     ) -> List[TransactionRow]:
         q = (
             self.db.query(Transaction, Client.full_name)
@@ -57,6 +59,10 @@ class TransactionRepository:
             q = q.filter(Transaction.client_id == client_id)
         if transaction_type:
             q = q.filter(Transaction.transaction_type == transaction_type)
+        if date_from:
+            q = q.filter(Transaction.created_at >= datetime.combine(date_from, time.min))
+        if date_to:
+            q = q.filter(Transaction.created_at <= datetime.combine(date_to, time.max))
         rows = q.order_by(Transaction.created_at.desc()).offset(skip).limit(limit).all()
         return [TransactionRow(transaction=txn, client_name=name) for txn, name in rows]
 

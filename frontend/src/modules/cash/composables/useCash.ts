@@ -60,6 +60,12 @@ export function useCash() {
       push.success('Caja abierta correctamente')
       return data
     } catch (error: any) {
+      if (error.response?.status === 409) {
+        // Ya hay una caja abierta en la DB — sincronizar estado del frontend
+        push.warning('Ya existe una caja abierta. Cargando sesión activa...')
+        await fetchCurrent()
+        return currentSession.value
+      }
       push.error(error.response?.data?.detail || 'Error al abrir caja')
       throw error
     } finally {

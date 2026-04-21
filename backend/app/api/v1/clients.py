@@ -10,7 +10,7 @@ from app.db.session import get_db
 from app.models.ledger_entry import Currency
 from app.models.user import User
 from app.schemas.client import ClientCreate, ClientOut, ClientUpdate
-from app.schemas.ledger import BalanceOut, LedgerResponse
+from app.schemas.ledger import BalanceOut, LedgerGroupedResponse, LedgerResponse
 from app.services.auth_service import get_current_user
 from app.services.client_service import ClientService
 from app.services.ledger_service import LedgerService
@@ -124,4 +124,52 @@ def get_ledger(
         skip=skip,
         limit=limit,
         reference_exchange_rate=reference_exchange_rate,
+    )
+
+
+@router.get(
+    "/{client_id}/ledger-summary",
+    response_model=LedgerGroupedResponse,
+    summary="Libro mayor agrupado por transacción",
+    description=(
+        "Vista tipo Excel del libro mayor: **una fila por transacción** con columnas "
+        "separadas para egreso/ingreso por divisa.\n\n"
+        "**Diferencia con `/ledger` (detallado):** el ledger detallado devuelve una fila "
+        "por `ledger_entry` (hasta 2 filas por transacción de cambio). Esta vista las "
+        "colapsa en una sola fila con columnas `egreso_mxn`, `egreso_gtq`, `ingreso_mxn`, "
+        "`ingreso_gtq`.\n\n"
+        "**Convención egreso / ingreso (perspectiva empresa):**\n"
+        "- `egreso` = CREDIT en ledger (empresa dio al cliente)\n"
+        "- `ingreso` = DEBIT en ledger (empresa recibió del cliente)\n\n"
+        "**Posición neta en `summary`:**\n"
+        "- `net_mxn = total_ingreso_mxn - total_egreso_mxn`\n"
+        "- `net_gtq = total_ingreso_gtq - total_egreso_gtq`\n"
+        "- `net > 0` → `CLIENT_OWES` (el cliente nos debe)\n"
+        "- `net < 0` → `COMPANY_OWES` (le debemos al cliente)\n"
+        "- `net = 0` → `SETTLED`\n\n"
+        "El `summary` siempre refleja el rango completo de fechas, "
+        "independiente de la paginación. Solo transacciones `ACTIVE`."
+    ),
+)
+def get_ledger_summary(
+    client_id: UUID,
+    skip: int = Query(0, ge=0),
+    limit: int = Query(50, ge=1, le=200),
+    date_from: Optional[datetime.date] = Query(None, description="Desde fecha (YYYY-MM-DD)"),
+    date_to: Optional[datetime.date] = Query(None, description="Hasta fecha (YYYY-MM-DD)"),
+    db: Session = Depends(get_db),
+    _: User = Depends(get_current_user),
+):
+    if date_from and date_to and date_to < date_from:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="date_to debe ser mayor o igual a date_from",
+        )
+    ClientService(db).get_or_404(client_id)
+    return LedgerService(db).get_grouped_ledger(
+        client_id,
+        date_from=date_from,
+        date_to=date_to,
+        skip=skip,
+        limit=limit,
     )
