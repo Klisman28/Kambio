@@ -336,9 +336,9 @@ const visibleRows = computed<LedgerGroupedRow[]>(() => {
 // ── Lifecycle ─────────────────────────────────────────────────────────────────
 onMounted(async () => {
   await loadClients()
-  if (route.query.type)     filterType.value     = route.query.type     as string
-  if (route.query.from)     filterDateFrom.value = route.query.from     as string
-  if (route.query.to)       filterDateTo.value   = route.query.to       as string
+  if (route.query.type)       filterType.value     = route.query.type      as string
+  if (route.query.date_from)  filterDateFrom.value = route.query.date_from as string
+  if (route.query.date_to)    filterDateTo.value   = route.query.date_to   as string
   if (selectedClientId.value && selectedClientId.value !== ':clientId') {
     await fetchLedgerData()
   }
@@ -359,15 +359,14 @@ async function fetchLedgerData() {
   if (!selectedClientId.value) return
   loading.value = true
   try {
-    const url = new URL(
-      `/api/v1/clients/${selectedClientId.value}/ledger-summary`,
-      window.location.origin
-    )
-    url.searchParams.append('limit', '200')
-    if (filterDateFrom.value) url.searchParams.append('date_from', filterDateFrom.value)
-    if (filterDateTo.value)   url.searchParams.append('date_to',   filterDateTo.value)
+    const params: Record<string, string> = { limit: '200' }
+    if (filterDateFrom.value) params.date_from = filterDateFrom.value
+    if (filterDateTo.value)   params.date_to   = filterDateTo.value
 
-    const res = await http.get<LedgerGroupedResponse>(url.pathname + url.search)
+    const res = await http.get<LedgerGroupedResponse>(
+      `/api/v1/clients/${selectedClientId.value}/ledger-summary`,
+      { params }
+    )
     ledgerData.value = res.data
   } catch (e) {
     console.error('Error fetching ledger-summary', e)
